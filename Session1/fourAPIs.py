@@ -16,9 +16,9 @@ spellsJson = json.loads(spells)
 adviceJson = json.loads(advice)
 adviceText = adviceJson.get("slip").get("advice")
 
-print(f"About the number {number}:\n{numberInfo}")
-print(f"About {fruit}:\n{fruitJson}")
-print(f"My advice to you is:\n{adviceText}")
+print(f"About the number {number}:\n{numberInfo}\n==========================================================================================")
+print(f"About {fruit}:\n{fruitJson}\n==========================================================================================")
+print(f"My advice to you is:\n{adviceText}\n==========================================================================================")
 print(f"Here is the list of spells that you can use:\n{spells}")
 
 
