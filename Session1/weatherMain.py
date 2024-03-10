@@ -6,22 +6,12 @@ from requests import get as getWeather
 import json
 
 # pyqt5
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QPixmap
 
 # GUI
 from weatherGUI import Ui_MainWindow
-import weatherGUI
 
-
-# class MainWindow(QMainWindow, Ui_MainWindow):
-#     def __init__(self, *args, **kwargs):
-#         super(MainWindow, self).__init__(*args, **kwargs)
-#         self.setupUi(self)
-        
-#         self.initialization()
-
-#         self.pushButton_select.clicked.connect(self.new_city)
 
 class MyMainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
