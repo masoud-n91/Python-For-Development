@@ -1,4 +1,4 @@
-# Weather Application and 4 test APIs
+# Weather Application 
 
 This application provides a comprehensive set of features allowing users to retrieve various types of information, including weather forecasts, interesting facts about numbers and fruits, random advice, and a list of Harry Potter spells. The application utilizes APIs to fetch this information in real-time.
 
@@ -34,7 +34,7 @@ python weatherGUI.py
 
 5. The application will display the current weather information along with forecasts for the next three days.
 
-# Features
+## Features
 * Fetches current weather data and forecast for the next three days.
 * Dynamic GUI built with PyQt5.
 * Displays weather description, temperature, and wind speed.
