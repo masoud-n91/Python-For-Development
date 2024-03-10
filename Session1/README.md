@@ -1,6 +1,6 @@
 # Weather Application 
 
-This application provides a comprehensive set of features allowing users to retrieve various types of information, including weather forecasts, interesting facts about numbers and fruits, random advice, and a list of Harry Potter spells. The application utilizes APIs to fetch this information in real-time.
+This Weather Forecast Application provides current weather information and forecasts for the next three days based on the user's input city name. It fetches weather data from the GoWeather API.
 
 ## Installation
 
