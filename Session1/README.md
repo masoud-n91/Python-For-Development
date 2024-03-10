@@ -9,7 +9,7 @@ This application provides a comprehensive set of features allowing users to retr
 2. Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/your_username/weather-info.git
+git clone https://github.com/masoud-n91/Python-For-Development/tree/main/Session1
 ```
 
 3. Install the required dependencies using pip:
