@@ -16,7 +16,7 @@ def main():
     
     response = requests.get(url)
 
-    filename = "Session2/flower.png"
+    filename = "Session2/Media/flower.png"
     
     if response.status_code == 200:
         with open(filename, 'wb') as f:

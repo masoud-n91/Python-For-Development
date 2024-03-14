@@ -36,6 +36,6 @@ def main(filename):
     return flower_name
 
 if __name__ == "__main__":
-    filename = "Session2/plant1.jpeg"
+    filename = "Session2/Media/plant1.jpeg"
     result = main(filename)
     print(result)
