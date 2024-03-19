@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyFirstCSApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d8daca76b8efbccb4e6156b9e73042091083658")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34c2f445172144be9529722f178ff3c99f026068")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyFirstCSApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyFirstCSApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
