@@ -144,7 +144,7 @@ def planets(planet_name: str):
 @app.get("/planets/{planet_name}/image")
 def planets_image(planet_name: str):
     if planet_name.capitalize() in planets_information:
-        img = cv2.imread(f"Session3/media/{planet_name.capitalize()}.jpg")
+        img = cv2.imread(f"media/{planet_name.capitalize()}.jpg")
         _, encoded_img = cv2.imencode('.jpg', img)
         return StreamingResponse(BytesIO(encoded_img.tobytes()), media_type="image/jpg")
     else:
