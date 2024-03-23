@@ -8,4 +8,4 @@ You want to be more specific? Add the name of your favorit planet at the end of 
 
 You are not saticfied yet? Do you want to see your planet from above? check this: https://python-for-development.onrender.com/planets/Earth/image
 
-That's all for today. Know you owe me one :)
+That's all for today. Now you owe me one :)
