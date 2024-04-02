@@ -15,7 +15,7 @@ Wanna add something? this endpoint is created for you. Don't forget to send the 
 Wanna move on? Delete what you don't need. Give the ID of your task in the end of the endpoint.
 
 ## put("/todo/{ID}")
-I knew it!! Your even enter what you want to do correctly. No problem. Edit your task here. Give the ID after the endpoint and then send the form with it.
+I knew it!! You even can't enter what you want to do correctly. No problem. Edit your task here. Give the ID after the endpoint and then send the form with it.
 
 ## NOTE
 If a form is needed and you forget to send it with your request (which I know you will), you'll see an error. Try harder next time :)
