@@ -2,7 +2,7 @@
 
 If I know you, your information must be in my database. So give me your username and password and also an image of your face. If I know you I will let you know.
 
-## post your information
+## Post your information
 
 1- Prepare a form with these keys: username, password, and image. The first two are text and the third one is a file.
 
