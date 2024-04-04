@@ -10,7 +10,7 @@ def read_root():
     return {"Remembrall": "Gran knows I forget things — this tells you if there's something you've forgotten to do. Look, I've forgotten something already!"}
 
 @app.get("/todo")
-def read_root():
+def read_db():
     conn = sqlite3.connect('todo.db')
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM tasks")
