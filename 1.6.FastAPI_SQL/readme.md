@@ -46,6 +46,11 @@ docker pull postgres
 docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=<password> -e POSTGRES_USER=<username> -e POSTGRES_DB=<database_name> -d postgres
 ```
 
+- Run the code by starting uvicorn:
+```
+uvicorn sql_app.main:app
+``` 
+
 - Note: for now, the default username, password, and database_name is Masoud, Which_password, and UniversityStudents. If you want to use the default settings, just use the following line to run the container:
 
 ```
