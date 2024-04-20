@@ -14,12 +14,12 @@ Before running this project, ensure you have the following installed:
 ## Installation
 - Clone this repository:
 ```
-git clone <repository_url>
+git clone https://github.com/masoud-n91/Python-For-Development.git
 ```
 
 - Navigate to the project directory:
 ```
-cd <project_directory>
+cd .\Python-For-Development\1.6.FastAPI_SQL\
 ```
 
 - Install dependencies:
@@ -35,9 +35,6 @@ Implement GET, POST, PUT, DELETE methods to manipulate data in the database.
 
 
 ### Expert Mode
-Follow the FastAPI SQL Databases Tutorial to set up PostgreSQL database.
-Create Student and Course classes with appropriate attributes.
-Utilize PostgreSQL database instead of SQLite by configuring SQLAlchemy database URL.
 
 - Pull PostgreSQL Docker image:
 ```
@@ -49,13 +46,13 @@ docker pull postgres
 docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=<password> -e POSTGRES_USER=<username> -e POSTGRES_DB=<database_name> -d postgres
 ```
 
-- Change SQLAlchemy database URL in the project:
+- Note: for now, the default username, password, and database_name is Masoud, Which_password, and UniversityStudents. If you want to use the default settings, just use the following line to run the container:
+
 ```
-SQLALCHEMY_DATABASE_URL = "postgresql://<username>:<password>@localhost:5432/<database_name>"
+docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=Which_password -e POSTGRES_USER=Masoud -e POSTGRES_DB=UniversityStudents -d postgres
 ```
 
-Implement the required functionality for Student and Course classes.
-Don't forget to update .gitignore, readme.md, and requirements.txt files accordingly.
+If you want to change the default setting, you have to update the database.py script, accordingly.
 
 
 ## Contribution
