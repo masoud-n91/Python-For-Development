@@ -57,6 +57,17 @@ uvicorn sql_app.main:app
 docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=Which_password -e POSTGRES_USER=Masoud -e POSTGRES_DB=UniversityStudents -d postgres
 ```
 
+### Deployment
+To deploy this app, you have to follow the steps below:
+
+1- Create a Postgres on Liara and add it to a private network.
+
+2- Copy the username, password, and database name from Liara.
+
+3- Modify the dockerfile with the information in the second step.
+
+4- Use Liara CLI to push the docker image.
+
 
 ## Contribution
 Feel free to contribute to this project by submitting issues or pull requests.
