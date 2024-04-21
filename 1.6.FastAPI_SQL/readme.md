@@ -51,10 +51,10 @@ docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=<password> -e 
 uvicorn sql_app.main:app
 ``` 
 
-- Note: for now, the default username, password, and database_name is Masoud, Which_password, and UniversityStudents. If you want to change the default setting, you have to update the database.py script, accordingly,else If you want to use the default settings, just use the following line to run the container:
+- Note: for now, the default username, password, and database_name is Masoud, which_password, and UniversityStudents. If you want to change the default setting, you have to update the database.py script, accordingly,else If you want to use the default settings, just use the following line to run the container:
 
 ```
-docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=Which_password -e POSTGRES_USER=Masoud -e POSTGRES_DB=UniversityStudents -d postgres
+docker run -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=which_password -e POSTGRES_USER=Masoud -e POSTGRES_DB=UniversityStudents -d postgres
 ```
 
 ### Deployment

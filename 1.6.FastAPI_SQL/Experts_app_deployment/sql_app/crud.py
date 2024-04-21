@@ -33,3 +33,24 @@ def create_user_course(db: Session, course: schemas.CourseCreate, user_id: int):
     db.commit()
     db.refresh(db_course)
     return db_course
+
+def remove_user_id(id: int, db: Session):
+    user = db.query(models.User).filter(models.User.id == id)
+    firstname = user.first().firstname
+    lastname = user.first().lastname
+    user.delete()
+    db.commit()
+    return {"message": f"{firstname} {lastname} is deleted successfully"}
+
+
+def edit_user_id(id: int, db: Session, firstname: str = None, lastname: str = None, average: float = None, graduated: bool = None):
+    if firstname:
+        db.query(models.User).filter(models.User.id == id).update({models.User.firstname: firstname})
+    if lastname:
+        db.query(models.User).filter(models.User.id == id).update({models.User.lastname: lastname})
+    if average:
+        db.query(models.User).filter(models.User.id == id).update({models.User.average: average})
+    if graduated:
+        db.query(models.User).filter(models.User.id == id).update({models.User.graduated: graduated})
+    db.commit()
+    return {"message": f"User with id of {id} is updated successfully"}

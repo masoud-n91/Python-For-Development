@@ -56,3 +56,17 @@ def create_course_for_user(
 def read_courses(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     courses = crud.get_courses(db, skip=skip, limit=limit)
     return courses
+
+
+@app.delete("/users/{user_id}")
+def delete_user(user_id: int, db: Session = Depends(get_db)):
+    response = crud.remove_user_id(id=user_id, db=db)
+    return response
+
+
+@app.put("/users/{user_id}")
+def update_user(user_id: int, firstname: str = None, lastname: str = None, average: float = None, graduated: bool = None, db: Session = Depends(get_db)):
+    if not firstname and not lastname and not average and not graduated:
+        raise HTTPException(status_code=400, detail="No information is provided to update")
+    response = crud.edit_user_id(id=user_id, db=db, firstname=firstname, lastname=lastname, average=average, graduated=graduated)
+    return response
