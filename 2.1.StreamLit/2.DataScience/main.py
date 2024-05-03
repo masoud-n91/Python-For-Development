@@ -11,7 +11,6 @@ def data_analyzer(df):
 
     print(f"data: {data}")
 
-    os.environ["GROQ_API_KEY"] = "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"
     
     client = Groq(api_key=os.environ.get("GROQ_API_KEY"),)
 
