@@ -23,7 +23,7 @@ def connect_to_database():
 
 @st.cache_resource
 def auth_groq():
-    os.environ["GROQ_API_KEY"] = "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"
+    os.environ["GROQ_API_KEY"] = "your API key"
     client = Groq(api_key=os.environ.get("GROQ_API_KEY"),)
     return client
 
