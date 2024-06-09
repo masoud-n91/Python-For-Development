@@ -5,3 +5,4 @@ streamlit-option-menu==0.3.12
 streamlit-cookie==0.1.0
 groq==0.5.0
 psycopg2-binary
+python-dotenv

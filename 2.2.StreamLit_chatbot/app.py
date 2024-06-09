@@ -2,10 +2,12 @@ import datetime
 from sqlmodel import Session, SQLModel, create_engine, select
 import streamlit as st
 from models import Message
-from auth import StreamlitAuth
+from authentication import StreamlitAuth
 from groq import Groq
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
 st.set_page_config(
     page_title="ChatBot",
@@ -16,15 +18,15 @@ st.set_page_config(
 
 @st.cache_resource
 def connect_to_database():
-    engine = create_engine("postgresql://root:n1pWuZc7GruapxRavKzYp2Lu@chatbotdb:5432/postgres")
+    engine = create_engine("postgresql://postgres:Mikhandi91@localhost:5432/chatbotdb")
     SQLModel.metadata.create_all(engine)
     return engine
 
 
 @st.cache_resource
 def auth_groq():
-    os.environ["GROQ_API_KEY"] = "your API key"
-    client = Groq(api_key=os.environ.get("GROQ_API_KEY"),)
+
+    client = Groq(api_key=os.getenv("GROQ_API_KEY"),)
     return client
 
 
@@ -93,7 +95,7 @@ client = auth_groq()
 if auth.user:
     with st.sidebar:
         st.title("My Chatbot")
-        st.write(f'Welcome *{st.session_state.user.name}*')
+        st.write(f'Welcome *{auth.user.name}*')
         auth.signout()
 
     if 'messages' not in st.session_state:
