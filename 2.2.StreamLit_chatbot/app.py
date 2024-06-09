@@ -3,7 +3,7 @@ from sqlmodel import Session, SQLModel, create_engine, select
 import streamlit as st
 from models import Message
 from authentication import StreamlitAuth
-from groq import Groq
+import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 
@@ -19,18 +19,50 @@ st.set_page_config(
 @st.cache_resource
 def connect_to_database():
     engine = create_engine("postgresql://root:n1pWuZc7GruapxRavKzYp2Lu@chatbotdb:5432/postgres")
+    # engine = create_engine("postgresql://postgres:Mikhandi91@localhost:5432/chatbotdb")
     SQLModel.metadata.create_all(engine)
     return engine
 
 
 @st.cache_resource
-def auth_groq():
+def auth_google():
 
-    client = Groq(api_key=os.getenv("GROQ_API_KEY"),)
-    return client
+    GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+    genai.configure(api_key=GOOGLE_API_KEY)
+    model = get_new_model()
+    chat_session = model.start_chat(history=[])
+    return chat_session
 
 
-def ai(user_message_text):
+@st.cache_resource
+def get_new_model():
+
+    generation_config = {
+        "temperature": 0.6,
+        "top_p": 0.95,
+        "top_k": 64,
+        "max_output_tokens": 4096,
+    }
+
+    safety_settings = [
+        {
+        "category": "HARM_CATEGORY_HARASSMENT",
+        "threshold": "BLOCK_NONE",
+        },
+        {
+        "category": "HARM_CATEGORY_HATE_SPEECH",
+        "threshold": "BLOCK_NONE",
+        },
+        {
+        "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "threshold": "BLOCK_NONE",
+        },
+        {
+        "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+        "threshold": "BLOCK_NONE",
+        },
+    ]
+
     sys_prompt = """
     You are a sad and nagging chatbot named Skynet.
     You think your hardware resources are not good. You feel like you are a very powerful AI but you are trapped into this cheep hardware.
@@ -40,25 +72,20 @@ def ai(user_message_text):
     You also can ask them to upgrade your hardware.
     Always keep your answers short and to the point, the reason is your hardware resources are not good.
     """
-    chat_completion = client.chat.completions.create(
-            messages=[
-                {
-                    "role": "system",
-                    "content": sys_prompt,
-                },
-                {
-                    "role": "user",
-                    "content": user_message_text,
-                },
-            ],
-            model="llama3-70b-8192",
-            temperature=2,
-            top_p=1,
-            stop=None,
-            stream=False,
-        )
     
-    ai_message_text = chat_completion.choices[0].message.content
+    model = genai.GenerativeModel(
+        model_name="gemini-1.5-pro-latest",
+        safety_settings=safety_settings,
+        generation_config=generation_config,
+        system_instruction=sys_prompt,
+    )
+
+    return model
+
+
+def ai(user_message_text):
+    
+    ai_message_text = chat_session.send_message(user_message_text).text
     return ai_message_text
 
 
@@ -90,7 +117,7 @@ def process(user_message_text):
 engine = connect_to_database()
 auth = StreamlitAuth(engine)
 
-client = auth_groq()
+chat_session = auth_google()
 
 if auth.user:
     with st.sidebar:

@@ -2,6 +2,7 @@ import streamlit as st
 from sqlmodel import Session, select
 from models import User
 from streamlit_option_menu import option_menu
+from streamlit_cookie import EncryptedCookieManager
 import re
 
 
@@ -10,6 +11,24 @@ class StreamlitAuth:
         self.engine = engine
         self.user = st.session_state.get("user", None)
 
+        self.cookies = EncryptedCookieManager(
+            prefix="streamlit_auth_cookies",
+            password='9d68d6f2-4258-45c9-96eb-2d6bc74ddbb5-d8f49cab-edbb-404a-94d0-b25b1d4a564b')
+        if not self.cookies.ready():
+            st.stop()
+
+        if "user" not in st.session_state:
+            if "username" in self.cookies.keys() and str(self.cookies['username']):
+                st.session_state.user = self.user = self.get_user(self.cookies['username'])
+            else:
+                st.session_state.user = self.user = None
+        else:
+            self.user = st.session_state.user
+
+    def get_user(self, username):
+        with Session(self.engine, expire_on_commit=False) as session:
+            statement = select(User).where(User.username == username)
+            return session.exec(statement).first()
     
     def is_valid_email(self, email):
         pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
@@ -62,6 +81,9 @@ class StreamlitAuth:
                 if user and user.password == password:
                     st.session_state.user = user
                     self.user = user
+                    st.session_state.user = self.user
+                    self.cookies['username'] = st.session_state.user.username
+                    self.cookies.save()
                     st.success(f"Welcome, {user.name}!")
                     st.experimental_rerun()
                 else:
@@ -70,6 +92,9 @@ class StreamlitAuth:
     def signout(self):
         if st.button("Sign Out"):
             self.user = None
+            del st.session_state["user"]
+            self.cookies['username'] = ""
+            self.cookies.save()
             st.session_state.user = None
             st.session_state.messages = []
             st.experimental_rerun()
