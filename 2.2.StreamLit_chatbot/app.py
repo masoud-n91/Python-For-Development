@@ -18,7 +18,7 @@ st.set_page_config(
 
 @st.cache_resource
 def connect_to_database():
-    engine = create_engine("postgresql://postgres:Mikhandi91@localhost:5432/chatbotdb")
+    engine = create_engine("postgresql://root:n1pWuZc7GruapxRavKzYp2Lu@chatbotdb:5432/postgres")
     SQLModel.metadata.create_all(engine)
     return engine
 
