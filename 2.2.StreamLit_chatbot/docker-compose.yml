@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    image: sadbot:latest
+    ports:
+      - "5000:8000"
+    depends_on:
+      - db
+    networks:
+      - npm
+
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: chatbotdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: AStrongPassword
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - npm
+
+
+networks:
+  npm:
+    external: true
+
+volumes:
+  pgdata:
