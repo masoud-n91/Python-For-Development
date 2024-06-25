@@ -1,0 +1,38 @@
+{% extends "user-layout.html" %}
+
+{% block title %}
+    BMR Calculator
+{% endblock %}
+
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card mb-4 mt-4">
+            <h2 class="card-title text-center mt-4 mb-4">BMR Calculator</h2>
+            <form id="bmr-form" action="/bmrcalculator" method="POST">
+                <div class="form-group mx-5">
+                    <label for="gender">Gender:</label>
+                    <select class="form-control" id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <label for="age">Age (years):</label>
+                    <input type="number" class="form-control" id="age" name="age" min="18" required>
+                    <br>
+                    <label for="weight">Weight (kg):</label>
+                    <input type="number" class="form-control" id="weight" name="weight" step="0.01" required>
+                    <br>
+                    <label for="height">Height (cm):</label>
+                    <input type="number" class="form-control" id="height" name="height" required>
+                </div>
+                <div class="container text-center mb-4">
+                    <button type="submit" class="btn btn-primary">Calculate BMR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

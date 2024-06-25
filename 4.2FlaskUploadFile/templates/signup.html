@@ -1,0 +1,60 @@
+{% extends "main-layout.html" %}
+
+{% block title %}
+    Sign Up
+{% endblock %}
+
+<!-- Signup Form -->
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Sign Up</h2>
+                    
+                    <!-- Flash Messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <!-- Sign Up Form -->
+                    <form action="/register" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name"  placeholder="John" required>
+                            <br>
+                            <label for="surname">Surname</label>
+                            <input type="text" class="form-control" id="surname" name="surname" placeholder="Doe" required>
+                            <br>
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="john.doe@example.com" required>
+                            <br>
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="john_doe" required>
+                            <br>
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="A Very Str0ng Passw0rd!" required>
+                            <br>
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="check_password" name="check_password" placeholder="Repeat your password" required>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+{% endblock %}
+

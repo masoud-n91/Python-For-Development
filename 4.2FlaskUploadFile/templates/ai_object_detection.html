@@ -1,0 +1,41 @@
+{% extends "user-layout.html" %}
+
+{% block title %}
+    AI Object Detection
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <h2 class="card-title text-center mb-4 mt-4">Upload an image for AI Object Detection</h2>
+                <form id="object-detection-form" action="/ai-object-detection" method="POST" enctype="multipart/form-data">
+                    <div class="form-group mx-5">
+                        <label for="image">Select image:</label>
+                        <input type="file" class="form-control" id="image" name="image" required>
+                    </div>
+                    <div class="container text-center mb-4">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="loading-modal" id="loadingModal">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('object-detection-form').addEventListener('submit', function() {
+            document.getElementById('loadingModal').style.display = 'block';
+        });
+    </script>
+    
+
+{% endblock %}

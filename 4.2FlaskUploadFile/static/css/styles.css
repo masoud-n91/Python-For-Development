@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('../images/bg1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+body.profile-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('../images/bg2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.jumbotron {
+    background: #f8f9fa;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.btn-custom {
+    width: 150px;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+.card {
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Style for the loading modal */
+.loading-modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding-top: 15%;
+}
+
+.loading-modal .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+.custom-card {
+    height: 100%; /* Ensure each custom card takes full height of its parent (column) */
+    width: 250px;
+}
+
+.custom-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure card body takes full height of custom card */
+    width: 250px;
+}
+
