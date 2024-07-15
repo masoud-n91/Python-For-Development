@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPEC Virtuals</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body class="profile-page">
+
+<!-- Content -->
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card mb-4 mt-4 without-background">
+                <h1 class="text-center mt-4" color="black">Welcome to our Virtual Assistants!</h1>
+                <div class="row justify-content-center mt-4 mb-4">
+                    <div class="col-md-3 mb-4 mx-4">
+                        <div class="card text-white bg-costum1 custom-card">
+                            <div class="card-body">
+                                <h1><i class="fa-duotone fa-face-viewfinder"></i></h1>
+                                <h5>MasoudGPT</h5>
+                                <img src="../static/images/chatbot.png">
+                                <a href="/virtual1" class="btn btn-outline-light stretched-link btn-custom">Start</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4 mx-4">
+                        <div class="card text-white bg-dark custom-card">
+                            <div class="card-body">
+                                <h1><i class="fa-duotone fa-object-group"></i></h1>
+                                <h5 class="card-title">International Service (Coming soon)</h5>
+                                <a href="/virtual1" class="btn btn-outline-light stretched-link btn-custom">Start</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4 mx-4">
+                        <div class="card text-white bg-danger custom-card">
+                            <div class="card-body">
+                                <h1><i class="fa-duotone fa-child-reaching"></i></h1>
+                                <h5 class="card-title">FST (Coming soon)</h5>
+                                <a href="/virtual1" class="btn btn-outline-light stretched-link btn-custom">Start</a>
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Flash message -->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flash-message">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-maA7+F1Cm0ByCPH3Q8mFc3usgxu2/EMF5UtDNOgjFE57R/+uxE1AqkCf4n7+DHSb"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy2FuxXvXkVcKJb4/Uq5tpjB6AnZ1TJjq8"
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function() {
+        var flashMessage = $('.flash-message');
+        if (flashMessage.children().length > 0) {
+            flashMessage.fadeIn('fast', function() {
+                setTimeout(function() {
+                    flashMessage.fadeOut('slow');
+                }, 3000); // Display for 3 seconds
+            });
+        }
+
+    });
+</script>
+</body>
+</html>

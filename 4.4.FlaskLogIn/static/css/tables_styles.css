@@ -1,0 +1,279 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* background-image: url('../images/bg1.jpg'); */
+    background-color: rgb(63, 63, 63);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+body.profile-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* background-image: url('../images/bg2.jpg'); */
+    background-color: rgb(63, 63, 63);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.jumbotron {
+    background: #f8f9fa;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.btn-custom {
+    width: 150px;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+.card {
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Style for the loading modal */
+.loading-modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding-top: 15%;
+}
+
+.loading-modal .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+.custom-card {
+    height: 100%; /* Ensure each custom card takes full height of its parent (column) */
+    width: 250px;
+}
+
+.custom-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensure card body takes full height of custom card */
+    width: 250px;
+}
+
+.flash-message {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(50px);
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1050; /* Ensure it's above other elements */
+    display: none; /* Hidden by default */
+    animation: fadeout 10s forwards;
+    display: flex; /* Use flexbox to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.flash-message p {
+    margin: 0; /* Remove default paragraph margin */
+}
+
+@keyframes fadeout {
+    0% { opacity: 1; }
+    90% { opacity: .9; }
+    92% { opacity: .7; }
+    94% { opacity: .5; }
+    96% { opacity: .3; }
+    98% { opacity: .1; }
+    100% { opacity: 0; }
+}
+
+.info-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    line-height: 16px;
+    cursor: pointer;
+    position: relative;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 250px;
+    background-color: #f1f1f1;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position the tooltip above the icon */
+    left: 50%;
+    margin-left: -100px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: left;
+}
+
+.info-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+#table-select {
+    width: 200px;
+    padding: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    width: 130%; /* Each column is 130% of its content width */
+    white-space: nowrap; /* Prevents wrapping of content */
+    overflow: hidden; /* Hides any content that exceeds the width */
+    text-overflow: ellipsis; /* Shows ellipsis (...) for overflowed text */
+}
+
+th {
+    background-color: #f2f2f2; /* Light gray background for header */
+    cursor: pointer; /* Indicate that headers are clickable for sorting */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+th:hover {
+    background-color: #ddd; /* Darken background on hover */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+th.sorted-asc::after {
+    content: " ▲"; /* Indicator for ascending sort */
+}
+
+th.sorted-desc::after {
+    content: " ▼"; /* Indicator for descending sort */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray background for even rows */
+}
+
+tr:nth-child(odd) {
+    background-color: #fff; /* White background for odd rows */
+}
+
+.costume-card{
+    border: none;
+    /* background-color:  rgb(63, 63, 63); */
+    padding: 20px;
+}
+
+
+.chatbot-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 0;
+    overflow: hidden;
+}
+
+.chatbot-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.chatbot-btn:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.navbar-nav .nav-item {
+    display: flex;
+    align-items: center;
+}
+.nav-link-icon {
+    position: relative;
+    margin-right: 15px;
+}
+.notification-dot {
+    position: absolute;
+    top: 35%;
+    right: 25%;
+    transform: translate(50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+    display: none; /* Initially hidden */
+}

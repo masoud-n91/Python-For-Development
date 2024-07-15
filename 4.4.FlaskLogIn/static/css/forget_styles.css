@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+.flash-message {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(50px);
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1050; /* Ensure it's above other elements */
+    display: none; /* Hidden by default */
+    animation: fadeout 10s forwards;
+    display: flex; /* Use flexbox to center content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.flash-message p {
+    margin: 0; /* Remove default paragraph margin */
+}
+
+@keyframes fadeout {
+    0% { opacity: 1; }
+    90% { opacity: .9; }
+    92% { opacity: .7; }
+    94% { opacity: .5; }
+    96% { opacity: .3; }
+    98% { opacity: .1; }
+    100% { opacity: 0; }
+}

@@ -1,0 +1,12 @@
+python-dotenv
+flask
+Werkzeug
+Flask-Mail
+Flask-Session
+pydantic
+bcrypt
+psycopg2-binary
+
+
+google-generativeai
+

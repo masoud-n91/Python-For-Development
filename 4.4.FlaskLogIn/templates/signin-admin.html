@@ -1,0 +1,28 @@
+{% extends 'signin-layout.html' %}
+
+{% block title %}
+    Admins Log in
+{% endblock %}
+
+{% block signup_action %}
+    action="{{ url_for('signup_admin') }}" method="POST"
+{% endblock %}
+
+{% block signin_action %}
+    action="{{ url_for('signin_admin') }}" method="POST"
+{% endblock %}
+
+{% block forget_action %}
+    forget-password-admin
+{% endblock %}
+
+{% block content1 %}
+    Admin
+{% endblock %}
+
+{% block content2 %}
+    Admin
+{% endblock %}
+
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slider_styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+<body>
+    
+    <div class="container {% block active_panel %}{% endblock %}" id="container">
+        <div class="form-container sign-up-container">
+            <form {% block signup_action %}{% endblock %}>
+                <h1>Create Account</h1>
+                <br>
+                <span>Use your email to regester as a {% block content1 %}{% endblock %}</span>
+                <input type="text" placeholder="First name" name="first_name"/>
+                <input type="text" placeholder="Last name" name="family_name"/>
+                {% block student_number %}{% endblock %}
+                <input type="email" placeholder="Email" name="email"/>
+                <div class="input-with-icon">
+                    <input type="password" placeholder="Password" name="password"/>
+                    <span class="password-hint-icon">i
+                        <div class="password-hint-box">
+                            <strong>Please make sure that your password contains:</strong>
+                            <ul>
+                                <li>at least 12 characters</li>
+                                <li>one uppercase letter</li>
+                                <li>one lowercase letter</li>
+                                <li>a number</li>
+                                <li>a special character</li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
+                <input type="password" placeholder="Retype Password" name="repassword"/>
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form {% block signin_action %}{% endblock %}>
+                <h1>Sign in</h1>
+                <br>
+                <span>Use your email to sign in as a {% block content2 %}{% endblock %}</span>
+                <input type="email" placeholder="Email" name="email"/>
+                <input type="password" placeholder="Password" name="password"/>
+                <a href="{% block forget_action %}{% endblock %}">Forgot your password?</a>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please sign in with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Fill out the form and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flash message -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flash-message">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <script src="{{ url_for('static', filename='js/slider_script.js') }}"></script>
+</body>
+</html>

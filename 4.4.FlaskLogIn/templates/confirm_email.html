@@ -1,0 +1,35 @@
+{% extends 'welcome-layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-6 text-center">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Email Confirmation</h2>
+                    {% if message %}
+                        {% if "invalid or has expired" in message %}
+                            <div class="alert alert-danger" role="alert">
+                                <i class="fas fa-exclamation-circle me-2"></i>{{ message }}
+                            </div>
+                            <p class="mt-3">Please request a new confirmation link.</p>
+                        {% else %}
+                            <div class="alert alert-success" role="alert">
+                                <i class="fas fa-check-circle me-2"></i>{{ message }}
+                            </div>
+                            <p class="mt-3">You can now log in to your account.</p>
+                        {% endif %}
+                    {% endif %}
+                    <div class="mt-4">
+                        {% if "invalid or has expired" in message %}
+                            <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Welcome Page</a>
+                        {% else %}
+                            <a href="{{ url_for('signin_guest') }}" class="btn btn-primary">Log in</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

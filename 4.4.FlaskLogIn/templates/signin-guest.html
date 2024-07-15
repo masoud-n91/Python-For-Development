@@ -1,0 +1,29 @@
+{% extends 'signin-layout.html' %}
+
+
+{% block title %}
+    Guests Log in
+{% endblock %}
+
+{% block signup_action %}
+    action="{{ url_for('signup_guest') }}" method="POST"
+{% endblock %}
+
+{% block signin_action %}
+    action="{{ url_for('signin_guest') }}" method="POST"
+{% endblock %}
+
+{% block forget_action %}
+    forget-password-guest
+{% endblock %}
+
+{% block content1 %}
+    Guest
+{% endblock %}
+
+
+{% block content2 %}
+    Guest
+{% endblock %}
+
+

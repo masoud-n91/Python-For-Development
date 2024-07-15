@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+test.py
+.env
+flask_session_cache/
+checklist.xlsx
+
+

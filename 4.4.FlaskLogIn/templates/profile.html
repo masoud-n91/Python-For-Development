@@ -1,0 +1,105 @@
+{% extends "user-layout.html" %}
+
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+
+        <div class="card mb-4 mt-4">
+            <h1 class="card-title text-center mt-4">Welcome, {{ username }}!</h1>
+            
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    {% if emotions %}
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Faces Detected:</h5>
+                                <ul>
+                                    {% for key, value in emotions.items() %}
+                                        <li>I found a {{ value }} face</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>            
+        
+                <div class="col-md-4 mb-4">
+                    {% if objects %}
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Detected Objects</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">In the image:</h6>
+                                <ul class="card-text">
+                                    {% for obj, count in objects.items() %}
+                                        <li>{{ obj }} (Count: {{ count }})</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    {% if bmr %}
+                        <div class="card bg-danger text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Estimated BMR</h5>
+                                <p class="card-text">Your estimated BMR is: {{ bmr }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+        
+            </div>
+
+            <div class="row justify-content-center mt-4 mb-4">
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white bg-primary h-100 custom-card">
+                        <div class="card-body">
+                            <h1><i class="fa-duotone fa-face-viewfinder"></i></h1>
+                            <h5 class="card-title">Face Analysis</h5>
+                            <p class="card-text">
+                                Wanna know your mood? Upload a photo of yourself.
+                            </p>
+                            <a href="/ai-face-analysis" class="btn btn-outline-light stretched-link">Go to Face Analysis</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white bg-success h-100 custom-card">
+                        <div class="card-body">
+                            <h1><i class="fa-duotone fa-object-group"></i></h1>
+                            <h5 class="card-title">Object Detection</h5>
+                            <p class="card-text">
+                                Upload a photo to detect objects in your surroundings.
+                            </p>
+                            <a href="/ai-object-detection" class="btn btn-outline-light stretched-link">Go to Object Detection</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white bg-danger h-100 custom-card">
+                        <div class="card-body">
+                            <h1><i class="fa-duotone fa-child-reaching"></i></h1>
+                            <h5 class="card-title">Discover Your BMR</h5>
+                            <p class="card-text">
+                                Curious about your Basal Metabolic Rate (BMR)? Input your details to find out!
+                            </p>
+                            <a href="/bmrcalculator" class="btn btn-outline-light stretched-link">
+                                Calculate Your BMR Now
+                            </a>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

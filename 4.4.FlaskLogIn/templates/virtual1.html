@@ -1,0 +1,18 @@
+{% extends 'welcome-layout.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-6 text-center">
+            <h1 class="mb-4">Welcome to our Virtual Assistant</h1>
+            <p class="mb-4">Please choose your user category to log in:</p>
+            <div class="d-grid gap-3">
+                <a href="{{ url_for('signin_guest') }}" class="btn btn-primary btn-lg costume-primary">Guest sign in</a>
+                <a href="{{ url_for('signin_student') }}" class="btn btn-success btn-lg">Student sign in</a>
+                <a href="{{ url_for('signin_admin') }}" class="btn btn-danger btn-lg">Admin sign in</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

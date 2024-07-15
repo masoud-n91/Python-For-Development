@@ -1,0 +1,36 @@
+{% extends 'signin-layout.html' %}
+
+
+{% block title %}
+    Students Log in
+{% endblock %}
+
+{% block active_panel %}
+    right-panel-active
+{% endblock %}
+
+{% block signup_action %}
+    action="{{ url_for('signup_student') }}" method="POST"
+{% endblock %}
+
+{% block signin_action %}
+    action="{{ url_for('signin_student') }}" method="POST"
+{% endblock %}
+
+{% block forget_action %}
+    forget-password-student
+{% endblock %}
+
+{% block content1 %}
+    Student
+{% endblock %}
+
+{% block student_number %}
+    <input type="text" placeholder="12345678" name="student_number"/>
+{% endblock %}
+
+{% block content2 %}
+    Student
+{% endblock %}
+
+

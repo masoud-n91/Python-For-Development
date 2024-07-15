@@ -1,0 +1,139 @@
+body {
+    background-color: white;
+}
+
+.container {
+    max-width: 960px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.btn-lg {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.card {
+    border: none;
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.alert {
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-custom {
+    width: 150px;
+    margin-top: auto; /* Pushes the button to the bottom */
+    margin-bottom: 10px; /* Adds 10px margin from the bottom */
+    align-self: center; /* Centers the button horizontally */
+}
+
+.custom-card {
+    height: 100%;
+    width: 250px;
+    margin: 10px auto; /* Center the card horizontally */
+}
+
+.custom-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+    width: 100%; /* Ensure card body takes full width of the card */
+}
+
+.costume-primary {
+    padding: 12px 24px;
+    font-size: 20px;
+}
+
+.without-background {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+
+.bg-costum1{
+    background-color: rgb(0, 0, 47);
+}
+
+h6{
+    font-size: 10px;
+}
+
