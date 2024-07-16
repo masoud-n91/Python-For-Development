@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/slider_styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slider_styles.css') }}">
     <title>
         {% block title %}
         {% endblock %}
     </title>
 </head>
 <body>
-    
+
     <div class="container {% block active_panel %}{% endblock %}" id="container">
         <div class="form-container sign-up-container">
             <form {% block signup_action %}{% endblock %}>
@@ -39,6 +39,7 @@
                 </div>
                 <input type="password" placeholder="Retype Password" name="repassword"/>
                 <button>Sign Up</button>
+                <a href="/" class="btn btn-primary btn-lg btn-custom">Return</a>
             </form>
         </div>
         <div class="form-container sign-in-container">
@@ -50,6 +51,7 @@
                 <input type="password" placeholder="Password" name="password"/>
                 <a href="{% block forget_action %}{% endblock %}">Forgot your password?</a>
                 <button>Sign In</button>
+                <a href="/" class="btn btn-primary btn-lg btn-custom">Return</a>
             </form>
         </div>
         <div class="overlay-container">

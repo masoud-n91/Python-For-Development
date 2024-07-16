@@ -689,6 +689,22 @@ def generate_response():
         error_message = "Error processing request: " + str(e)
         print(error_message)
         return jsonify({'error': error_message}), 500
+    
+
+@app.route("/about-me")
+def about_me():
+    return render_template("about-me.html")
+
+
+@app.route("/about-project")
+def about_project():
+    return render_template("about-project.html")
+
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 
 
 
