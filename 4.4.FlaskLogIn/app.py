@@ -264,7 +264,7 @@ def signup_admin():
         if not check_password(password1, password2):
             return redirect(url_for("signup_admin"))
 
-        hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt())
+        hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
         db.create_user(database="admins", first_name=first_name, family_name=family_name, email=email, password=hashed_password)
 
@@ -330,7 +330,7 @@ def signup_student():
         if not check_password(password1, password2):
             return redirect(url_for("signup_student"))
 
-        hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt())
+        hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
         db.create_user(database="students", first_name=first_name, family_name=family_name, email=email, password=hashed_password, student_number=student_number)
 
@@ -393,7 +393,6 @@ def signup_guest():
         if not check_password(password1, password2):
             return redirect(url_for("signup_guest"))
 
-        hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt())
         hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
 
@@ -617,14 +616,13 @@ def update_password_admin():
 
 
 # a dashboard to manupulate tables of database
-@app.route('/dashboard-admin')
+@app.route('/admin-dash')
 def admin_dashboard():
 
-    tables = db.get_tables()
-    
-    new_registers = db.read_pending_activations(["students"])
-
-    return render_template('dashboard-admin.html', tables=tables, new_registers=new_registers, enumerate=enumerate)
+    # tables = db.get_tables()
+    # new_registers = db.read_pending_activations(["students"])
+    # return render_template('admin-dash.html', tables=tables, new_registers=new_registers, enumerate=enumerate)
+    return render_template('admin-dash.html')
 
 
 @app.route('/dashboard-activations')
