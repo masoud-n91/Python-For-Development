@@ -6,7 +6,8 @@ Flask-Session
 pydantic
 bcrypt
 psycopg2-binary
-
+onnxruntime
+scikit-image
 
 google-generativeai
 
