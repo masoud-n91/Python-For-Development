@@ -1,1791 +1,2259 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
+
 <head>
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>Management Admin</title>
-<link rel="icon" href="static/img/mini_logo.png" type="image/png">
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap1.min.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/themefy_icon/themify-icons.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/niceselect/css/nice-select.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/owl_carousel/css/owl.carousel.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/gijgo/gijgo.min.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/font_awesome/css/all.min.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/tagsinput/tagsinput.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/datepicker/date-picker.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/vectormap-home/vectormap-2.0.2.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/scroll/scrollable.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/datatable/css/jquery.dataTables.min.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/datatable/css/responsive.dataTables.min.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/datatable/css/buttons.dataTables.min.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/text_editor/summernote-bs4.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/morris/morris.css') }}">
-
-<link rel="stylesheet" href="{{ url_for('static', filename='vendors/material_icon/material-icons.css') }}" />
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/metisMenu.css') }}">
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/colors/default.css') }}" id="colorSkinCSS">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Edmin admin is super flexible, powerful, clean &amp; modern responsive bootstrap admin template with unlimited possibilities.">
+  <meta name="keywords"
+    content="admin template, Edmin admin template, best javascript admin, dashboard template, bootstrap admin template, responsive admin template, web app">
+  <meta name="author" content="pixelstrap">
+  <title>Edmin - Premium Admin Template</title>
+  <!-- Favicon icon-->
+  <link rel="icon" href="{{ url_for('static', filename='images/admin/favicon/favicon.png') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/admin/favicon/favicon.png') }}"
+    type="image/x-icon">
+  <!-- Google font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+  <!-- Font awesome icon css -->
+  <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/admin/vendors/@fortawesome/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/admin/vendors/@fortawesome/fontawesome-free/css/fontawesome.css') }}">
+  <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/admin/vendors/@fortawesome/fontawesome-free/css/brands.css') }}">
+  <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/admin/vendors/@fortawesome/fontawesome-free/css/solid.css') }}">
+  <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/admin/vendors/@fortawesome/fontawesome-free/css/regular.css') }}">
+  <!-- Ico Icon css -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='css/admin/vendors/@icon/icofont/icofont.css') }}">
+  <!-- Flag Icon css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/vendors/flag-icon.css') }}">
+  <!-- Themify Icon css -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='css/admin/vendors/themify-icons/themify-icons/css/themify.css') }}">
+  <!-- Animation css -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='css/admin/vendors/animate.css/animate.css') }}">
+  <!-- Whether Icon css-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='css/admin/vendors/weather-icons/css/weather-icons.min.css') }}">
+  <!-- Apex Chart css-->
+  <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='css/admin/vendors/apexcharts/dist/apexcharts.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/admin/vendors/scrollbar.css') }}">
+  <!-- App css-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/style.css') }}">
+  <link id="color" rel="stylesheet" href="{{ url_for('static', filename='css/admin/color-1.css') }}" media="screen">
 </head>
-<body class="crm_body_bg">
+
+<body>
+  <!-- tap to top-->
+  <div class="tap-top">
+    <svg class="feather">
+      <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#arrow-up"></use>
+    </svg>
+  </div>
+  <!-- loader-->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+  <main class="page-wrapper compact-wrapper" id="pageWrapper">
+    <!-- Page header start -->
+    <header class="page-header row">
+      <div class="logo-wrapper d-flex align-items-center col-auto"><a href="index.html"><img class="for-light"
+            src="{{ url_for('static', filename='images/admin/logo/logo.png') }}" alt="logo"><img class="for-dark"
+            src="{{ url_for('static', filename='images/admin/logo/dark-logo.png') }}" alt="logo"></a><a
+          class="close-btn" href="javascript:void(0)">
+          <div class="toggle-sidebar">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </a></div>
+      <div class="page-main-header col">
+        <div class="header-left d-lg-block d-none">
+          <form class="search-form mb-0">
+            <div class="input-group"><span class="input-group-text pe-0">
+                <svg class="search-bg svg-color">
+                  <use href="../assets/svg/iconly-sprite.svg#Search"></use>
+                </svg></span>
+              <input class="form-control" type="text" placeholder="Search anything...">
+            </div>
+          </form>
+        </div>
+        <div class="nav-right">
+          <ul class="header-right">
+            <li class="modes d-flex"><a class="dark-mode">
+                <svg class="svg-color">
+                  <use href="../assets/svg/iconly-sprite.svg#Moon"></use>
+                </svg></a></li>
+            <li class="serchinput d-lg-none d-flex"><a class="search-mode">
+                <svg class="svg-color">
+                  <use href="../assets/svg/iconly-sprite.svg#Search"></use>
+                </svg></a>
+              <div class="form-group search-form">
+                <input type="text" placeholder="Search here...">
+              </div>
+            </li>
+            <!-- Notification menu-->
+            <li class="custom-dropdown"><a href="javascript:void(0)">
+                <svg class="svg-color circle-color">
+                  <use href="../assets/svg/iconly-sprite.svg#Bell"></use>
+                </svg></a><span class="badge rounded-pill badge-secondary">3</span>
+              <div class="custom-menu notification-dropdown py-0 overflow-hidden">
+                <h5 class="title bg-primary-light">Notifications <a href="private-chat.html"><span
+                      class="font-primary">View</span></a></h5>
+                <ul class="activity-update">
+                  <li class="d-flex align-items-center b-l-primary">
+                    <div class="flex-grow-1"> <span>Just Now</span><a href="private-chat.html">
+                        <h5>What`s the project report update?</h5>
+                      </a>
+                      <h6>Rick Novak</h6>
+                    </div>
+                    <div class="flex-shrink-0"> <img class="b-r-15 img-40"
+                        src="{{ url_for('static', filename='images/admin/avatar/10.jpg') }}" alt=""></div>
+                  </li>
+                  <li class="d-flex align-items-center b-l-secondary">
+                    <div class="flex-grow-1"> <span>12:47 am</span><a href="private-chat.html">
+                        <h5>James created changelog page</h5>
+                      </a>
+                      <h6>Susan Connor</h6>
+                    </div>
+                    <div class="flex-shrink-0"> <img class="b-r-15 img-40"
+                        src="{{ url_for('static', filename='images/admin/avatar/4.jpg') }}" alt=""></div>
+                  </li>
+                  <li class="d-flex align-items-center b-l-tertiary">
+                    <div class="flex-grow-1"> <span>06:10 pm</span><a href="private-chat.html">
+                        <h5>Polly edited Contact page</h5>
+                      </a>
+                      <h6>Roger Lum</h6>
+                    </div>
+                    <div class="flex-shrink-0"> <img class="b-r-15 img-40"
+                        src="{{ url_for('static', filename='images/admin/avatar/1.jpg') }}" alt=""></div>
+                  </li>
+                  <li class="mt-3 d-flex justify-content-center">
+                    <div class="button-group"><a class="btn btn-secondary" href="private-chat.html">All Notification</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <!-- Bookmark menu-->
+            <li class="custom-dropdown"><a href="javascript:void(0)">
+                <svg class="svg-color">
+                  <use href="../assets/svg/iconly-sprite.svg#Star"></use>
+                </svg></a>
+              <div class="custom-menu bookmark-dropdown py-0 overflow-hidden">
+                <h5 class="title bg-primary-light">Bookmark</h5>
+                <ul>
+                  <li>
+                    <form class="mb-3">
+                      <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search Bookmark..."><span
+                          class="input-group-text">
+                          <svg class="svg-color">
+                            <use href="../assets/svg/iconly-sprite.svg#Search"></use>
+                          </svg></span>
+                      </div>
+                    </form>
+                  </li>
+                  <li class="d-flex align-items-center bg-light-primary">
+                    <div class="flex-shrink-0 me-2"><a href="index.html">
+                        <svg class="svg-color stroke-primary">
+                          <use href="../assets/svg/iconly-sprite.svg#Home"></use>
+                        </svg></a></div>
+                    <div class="d-flex justify-content-between align-items-center w-100"><a
+                        href="index.html">Dashboard</a>
+                      <svg class="svg-color icon-star">
+                        <use href="../assets/svg/iconly-sprite.svg#Star"></use>
+                      </svg>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-center bg-light-secondary">
+                    <div class="flex-shrink-0 me-2"><a href="to-do.html">
+                        <svg class="svg-color stroke-secondary">
+                          <use href="../assets/svg/iconly-sprite.svg#Pie"></use>
+                        </svg></a></div>
+                    <div class="d-flex justify-content-between align-items-center w-100"><a href="to-do.html">To-do</a>
+                      <svg class="svg-color icon-star">
+                        <use href="../assets/svg/iconly-sprite.svg#Star"></use>
+                      </svg>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-center bg-light-tertiary">
+                    <div class="flex-shrink-0 me-2"><a href="apexchart.html">
+                        <svg class="svg-color stroke-tertiary">
+                          <use href="../assets/svg/iconly-sprite.svg#Chart"></use>
+                        </svg></a></div>
+                    <div class="d-flex justify-content-between align-items-center w-100"><a
+                        href="apexchart.html">Chart</a>
+                      <svg class="svg-color icon-star">
+                        <use href="../assets/svg/iconly-sprite.svg#Star"></use>
+                      </svg>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <!-- Cart menu-->
+            <li class="custom-dropdown"><a href="javascript:void(0)">
+                <svg class="svg-color">
+                  <use href="../assets/svg/iconly-sprite.svg#Bag"></use>
+                </svg></a>
+              <div class="custom-menu cart-dropdown py-0 overflow-hidden">
+                <h5 class="title bg-primary-light">Cart<span>Total : <span class="font-primary">4350.9</span></span>
+                </h5>
+                <ul>
+                  <li class="cartbox d-flex bg-light-primary">
+                    <div class="flex-shrink-0 border-primary"><img
+                        src="{{ url_for('static', filename='images/admin/dashboard2/product/1.png') }}" alt=""></div>
+                    <div class="touchpin-details"><a href="cart.html">
+                        <h5>Apple Computers</h5>
+                      </a><span>$2600.00</span>
+                      <div class="touchspin-wrapper">
+                        <button class="decrement-touchspin btn-touchspin">
+                          <svg class="svg-color">
+                            <use href="../assets/svg/iconly-sprite.svg#minus"></use>
+                          </svg>
+                        </button>
+                        <input class="form-control input-touchspin bg-light-primary" type="number" value="5">
+                        <button class="increment-touchspin btn-touchspin">
+                          <svg class="svg-color">
+                            <use href="../assets/svg/iconly-sprite.svg#plus"></use>
+                          </svg>
+                        </button>
+                      </div>
+                      <button class="btn btn-close"></button>
+                    </div>
+                  </li>
+                  <li class="cartbox d-flex bg-light-secondary">
+                    <div class="flex-shrink-0 border-secondary"><img
+                        src="{{ url_for('static', filename='images/admin/dashboard2/product/2.png') }}" alt=""></div>
+                    <div class="touchpin-details"><a href="cart.html">
+                        <h5>Microwave</h5>
+                      </a><span>$1450.45</span>
+                      <div class="touchspin-wrapper">
+                        <button class="decrement-touchspin btn-touchspin">
+                          <svg class="svg-color">
+                            <use href="../assets/svg/iconly-sprite.svg#minus"></use>
+                          </svg>
+                        </button>
+                        <input class="form-control input-touchspin bg-light-secondary" type="number" value="5">
+                        <button class="increment-touchspin btn-touchspin">
+                          <svg class="svg-color">
+                            <use href="../assets/svg/iconly-sprite.svg#plus"></use>
+                          </svg>
+                        </button>
+                      </div>
+                      <button class="btn btn-close"></button>
+                    </div>
+                  </li>
+                  <li class="cartbox d-flex bg-light-tertiary">
+                    <div class="flex-shrink-0 border-tertiary"><img
+                        src="{{ url_for('static', filename='images/admin/dashboard2/product/3.png') }}" alt=""></div>
+                    <div class="touchpin-details"><a href="cart.html">
+                        <h5>Mackup Kit</h5>
+                      </a><span>$300.45</span>
+                      <div class="touchspin-wrapper">
+                        <button class="decrement-touchspin btn-touchspin">
+                          <svg class="svg-color">
+                            <use href="../assets/svg/iconly-sprite.svg#minus"></use>
+                          </svg>
+                        </button>
+                        <input class="form-control input-touchspin bg-light-tertiary" type="number" value="5">
+                        <button class="increment-touchspin btn-touchspin">
+                          <svg class="svg-color">
+                            <use href="../assets/svg/iconly-sprite.svg#plus"></use>
+                          </svg>
+                        </button>
+                      </div>
+                      <button class="btn btn-close"></button>
+                    </div>
+                  </li>
+                  <li class="mt-3 p-0 d-flex justify-content-center">
+                    <div><a class="btn btn-secondary" href="checkout.html">Checkout</a></div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <!-- Bookmark menu-->
+            <li class="custom-dropdown"><a href="javascript:void(0)">
+                <svg class="svg-color">
+                  <use href="../assets/svg/iconly-sprite.svg#Message"></use>
+                </svg></a><span class="badge rounded-pill badge-tertiary">3</span>
+              <div class="custom-menu message-dropdown py-0 overflow-hidden">
+                <h5 class="title bg-primary-light">Messages</h5>
+                <ul>
+                  <li class="d-flex b-t-primary">
+                    <div class="d-block"><a href="letter-box.html">
+                        <h5>Design meeting</h5>
+                      </a>
+                      <h6>
+                        <svg class="feather me-1">
+                          <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                        </svg><span>Just Now</span>
+                      </h6>
+                    </div>
+                    <div class="badge badge-light-danger">
+                      <svg class="feather me-1">
+                        <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                      </svg><span>Open</span>
+                    </div>
+                  </li>
+                  <li class="d-flex b-t-secondary">
+                    <div class="d-block"><a href="letter-box.html">
+                        <h5>Weekly scurm Meeting</h5>
+                      </a>
+                      <h6>
+                        <svg class="feather me-1">
+                          <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                        </svg><span>1 Hour Ago</span>
+                      </h6>
+                    </div>
+                    <div class="badge badge-light-danger">
+                      <svg class="feather me-1">
+                        <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                      </svg><span>Open</span>
+                    </div>
+                  </li>
+                  <li class="d-flex b-t-tertiary">
+                    <div class="d-block"><a href="letter-box.html">
+                        <h5>Check your login page</h5>
+                      </a>
+                      <h6>
+                        <svg class="feather me-1">
+                          <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                        </svg><span>2 Hour Ago</span>
+                      </h6>
+                    </div>
+                    <div class="badge badge-light-success">
+                      <svg class="feather me-1">
+                        <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                      </svg><span>Closed</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="profile-dropdown custom-dropdown">
+              <div class="d-flex align-items-center"><img
+                  src="{{ url_for('static', filename='images/admin/profile.png') }}" alt="">
+                <div class="flex-grow-1">
+                  <h5>Wade Warren</h5><span>UI Designer</span>
+                </div>
+              </div>
+              <div class="custom-menu overflow-hidden">
+                <ul>
+                  <li class="d-flex">
+                    <svg class="svg-color">
+                      <use href="../assets/svg/iconly-sprite.svg#Profile"></use>
+                    </svg><a class="ms-2" href="user-profile.html">Account</a>
+                  </li>
+                  <li class="d-flex">
+                    <svg class="svg-color">
+                      <use href="../assets/svg/iconly-sprite.svg#Message"></use>
+                    </svg><a class="ms-2" href="letter-box.html">Inbox</a>
+                  </li>
+                  <li class="d-flex">
+                    <svg class="svg-color">
+                      <use href="../assets/svg/iconly-sprite.svg#Document"></use>
+                    </svg><a class="ms-2" href="to-do.html">Task</a>
+                  </li>
+                  <li class="d-flex">
+                    <svg class="svg-color">
+                      <use href="../assets/svg/iconly-sprite.svg#Login"></use>
+                    </svg><a class="ms-2" href="login.html">Log Out</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- Page header end-->
+    <div class="page-body-wrapper">
+      <!-- Page sidebar start-->
+      <div class="overlay"></div>
+      <aside class="page-sidebar" data-sidebar-layout="stroke-svg">
+        <div class="left-arrow" id="left-arrow">
+          <svg class="feather">
+            <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#arrow-left"></use>
+          </svg>
+        </div>
+        <div id="sidebar-menu">
+          <ul class="sidebar-menu" id="simple-bar">
+            <li class="pin-title sidebar-list p-0">
+              <h5 class="sidebar-main-title">Pinned</h5>
+            </li>
+            <li class="line pin-line"></li>
+            <li class="sidebar-main-title">General</li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Home"></use>
+                </svg><span>Dashboard</span>
+                <div class="badge badge-primary rounded-pill">3</div>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg>
+              </a>
+              <ul class="sidebar-submenu">
+                <li><a href="index.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Default</a></li>
+                <li><a href="dashboard-02.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Ecommerce</a></li>
+                <li><a href="dashboard-03.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Project</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Pie"></use>
+                </svg><span>Widgets</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="general-widget.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>General</a></li>
+                <li><a href="chart-widget.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Chart</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Document"></use>
+                </svg><span>Page Layout</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="box-layout.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Box Layout</a><a href="layout-rtl.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>RTL</a><a href="layout-dark.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Dark</a></li>
+              </ul>
+            </li>
+            <li class="line"> </li>
+            <li class="sidebar-main-title">Applications</li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Info-circle"></use>
+                </svg><span>Project</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="project-list.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Project List</a></li>
+                <li> <a href="projectcreate.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Create New</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="file-manager.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Paper"></use>
+                </svg><span>File Manager</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="kanban-board.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Wallet"></use>
+                </svg><span>Kanban Board</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Bag"></use>
+                </svg><span>Ecommerce</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="product.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Product</a></li>
+                <li><a href="product-page.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Product Page </a></li>
+                <li><a href="add-products.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Add Product </a></li>
+                <li><a href="list-products.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Product List</a></li>
+                <li><a href="payment-details.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Payment Details </a></li>
+                <li><a href="order-history.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Order History </a></li>
+                <li><a class="submenu-title" href="javascript:void(0)">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Invoice
+                    <svg class="feather">
+                      <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                    </svg></a>
+                  <ul class="according-submenu">
+                    <li><a href="invoice-1.html">
+                        Invoice-1</a></li>
+                    <li><a href="invoice-2.html">
+                        Invoice-2</a></li>
+                    <li><a href="invoice-3.html">
+                        Invoice-3</a></li>
+                    <li><a href="invoice-4.html">
+                        Invoice-4</a></li>
+                    <li><a href="invoice-5.html">
+                        Invoice-5</a></li>
+                    <li><a href="invoice-template.html">
+                        Invoice-6</a></li>
+                  </ul>
+                </li>
+                <li><a href="cart.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Cart </a></li>
+                <li><a href="list-wish.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Wishlist </a></li>
+                <li><a href="checkout.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Checkout </a></li>
+                <li><a href="pricing.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Pricing</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="letter-box.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Message"></use>
+                </svg><span>Letter Box</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Chat"></use>
+                </svg><span>Chat</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="private-chat.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Private Chat</a></li>
+                <li><a href="group-chat.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Group Chat</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Profile"></use>
+                </svg><span>Users</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="user-profile.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>User Profile</a></li>
+                <li><a href="edit-profile.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>User Edit</a></li>
+                <li><a href="user-cards.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>User Cards</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="bookmark.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Bookmark"></use>
+                </svg><span>Bookmarks</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="contacts.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Contacts"></use>
+                </svg><span>Contacts</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="task.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Tick-square"></use>
+                </svg><span>Tasks </span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="calendar-basic.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Calendar"></use>
+                </svg><span>Calendar</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="social-app.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Camera"></use>
+                </svg><span>Social App </span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="to-do.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Edit"></use>
+                </svg><span>To-Do </span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="search.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Search"></use>
+                </svg><span>Search Result</span></a>
+            </li>
+            <li class="line"></li>
+            <li class="sidebar-main-title">Components</li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="buttons.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#More-box"></use>
+                </svg><span>Buttons </span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Folder"></use>
+                </svg><span>Ui Kits</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="typography.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Typography</a></li>
+                <li><a href="avatars.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Avatars</a></li>
+                <li><a href="grid.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Grid</a></li>
+                <li><a href="helper-classes.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Helper Classes</a></li>
+                <li><a href="tag-pills.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Tag & Pills</a></li>
+                <li><a href="progress.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Progress</a></li>
+                <li><a href="popover.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Popover</a></li>
+                <li><a href="tooltip.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Tooltip</a></li>
+                <li><a href="alert.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Alert</a></li>
+                <li><a href="modal.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Modal</a></li>
+                <li><a href="dropdown.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Dropdown</a></li>
+                <li><a href="according.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Accordion</a></li>
+                <li><a href="bootstrap-tabs.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Tabs</a></li>
+                <li><a href="list.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Lists</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Ticket-star"></use>
+                </svg><span>Bonus Ui</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="scrollable.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Scrollable </a></li>
+                <li><a href="breadcrumbs.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Breadcrumb</a></li>
+                <li><a href="pagination.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Pagination</a></li>
+                <li><a href="ribbons.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Ribbons</a></li>
+                <li><a href="tree.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Tree View</a></li>
+                <li><a href="toasts.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Toast</a></li>
+                <li><a href="rating.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Rating</a></li>
+                <li><a href="dropzone.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Dropzone</a></li>
+                <li><a href="tour.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Tour</a></li>
+                <li><a href="sweetalert.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Sweetalert2</a></li>
+                <li><a href="modal-animated.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Animated Modal</a></li>
+                <li><a href="slider.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Slider</a></li>
+                <li><a href="range-slider.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Range Slider</a></li>
+                <li><a href="image-cropper.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Image Cropper</a></li>
+                <li><a href="basic-card.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Basic Card</a></li>
+                <li><a href="creative-card.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Creative Card</a></li>
+                <li><a href="dragabble.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Draggable Card</a></li>
+                <li><a href="timeline.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Timeline</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Category"></use>
+                </svg><span>Animation</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="wow.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Wow Animation</a></li>
+                <li><a href="aos.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>AOS Animation</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Activity"></use>
+                </svg><span>Icons</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="flag-icon.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Flag Icon</a></li>
+                <li><a href="font-awesome.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Fontawesome Icon</a></li>
+                <li><a href="feather-icon.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Feather Icon</a></li>
+                <li><a href="iconly-icon.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Iconly Icon</a></li>
+                <li><a href="ico-icon.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Ico Icon</a></li>
+                <li><a href="themify-icon.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Themify icon</a></li>
+                <li><a href="whether-icon.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Whether Icon</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Chart"></use>
+                </svg><span>Charts</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="apexchart.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Apexchart</a></li>
+                <li><a href="chartist.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Chartist</a></li>
+                <li><a href="chartjs.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Chartjs</a></li>
+              </ul>
+            </li>
+            <li class="line"></li>
+            <li class="sidebar-main-title">Forms & table</li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Filter"></use>
+                </svg><span>Form Controls</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="base_input.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Base Input</a></li>
+                <li><a href="radio-checkbox-control.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Check & Radio Box</a></li>
+                <li><a href="input-group.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Input Groups</a></li>
+                <li><a href="megaoptions.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Mega Options</a></li>
+                <li><a href="form-validation.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Form validation</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Scan"></use>
+                </svg><span>Form Widgets</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="datepicker.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Date picker </a></li>
+                <li><a href="touchspin.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Touchspin</a></li>
+                <li><a href="select2.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>select 2</a></li>
+                <li><a href="switch.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Switch</a></li>
+                <li><a href="typeahead.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Typeahead</a></li>
+                <li><a href="clipboard.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Clipboard</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Icon-plus"></use>
+                </svg><span>Form Layout</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="form-wizard.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Form wizard 1</a></li>
+                <li><a href="form-wizard-two.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Form wizard 2</a></li>
+                <li><a href="two-factor.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Two Factor</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Edit-line"></use>
+                </svg><span>Tables</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a class="submenu-title" href="javascript:void(0)">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Bootstrap Table
+                    <svg class="feather">
+                      <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                    </svg></a>
+                  <ul class="according-submenu">
+                    <li><a href="basic-table.html">
+                        Basic Tables</a></li>
+                    <li><a href="table_components.html">
+                        Table Components</a></li>
+                  </ul>
+                </li>
+                <li><a class="submenu-title" href="javascript:void(0)">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Data Tables
+                    <svg class="feather">
+                      <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                    </svg></a>
+                  <ul class="according-submenu">
+                    <li><a href="datatable-basic-init.html">
+                        Basic Init</a></li>
+                    <li><a href="datatable-advance.html">
+                        Advance Init</a></li>
+                    <li><a href="datatable-API.html">
+                        API</a></li>
+                    <li><a href="datatable-data-source.html">
+                        Data Sources</a></li>
+                  </ul>
+                </li>
+                <li><a href="datatable-ext-autofill.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Ex. Data Tables</a></li>
+                <li><a href="jsgrid-table.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Js Grid Table</a></li>
+              </ul>
+            </li>
+            <li class="line"> </li>
+            <li class="sidebar-main-title">Pages</li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="landing-page.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Wallet"></use>
+                </svg><span>Landing Page</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="sample-page.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Paper-plus"></use>
+                </svg><span>Sample Page</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="translate.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Play"></use>
+                </svg><span>Translate</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="../starter-kit/index.html" target="_blank">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Star"></use>
+                </svg><span>Starter kit</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Password"></use>
+                </svg><span>Others</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a class="submenu-title" href="javascript:void(0)">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Error Page
+                    <svg class="feather">
+                      <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                    </svg></a>
+                  <ul class="according-submenu">
+                    <li><a href="error-page1.html">
+                        Error Page 1</a></li>
+                    <li><a href="error-page2.html">
+                        Error Page 2</a></li>
+                    <li><a href="error-page3.html">
+                        Error Page 3</a></li>
+                    <li><a href="error-page4.html">
+                        Error Page 4</a></li>
+                    <li><a href="error-page5.html">
+                        Error Page 5</a></li>
+                    <li><a href="error-page6.html">
+                        Error Page 6</a></li>
+                  </ul>
+                </li>
+                <li><a class="submenu-title" href="javascript:void(0)">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Authentication
+                    <svg class="feather">
+                      <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                    </svg></a>
+                  <ul class="according-submenu">
+                    <li><a href="login.html">
+                        Login simple</a></li>
+                    <li><a href="login_one.html">
+                        Login With Bg Image</a></li>
+                    <li><a href="login_two.html">
+                        Login With Image Two</a></li>
+                    <li><a href="login-bs-validation.html">
+                        Login With Validation</a></li>
+                    <li><a href="login-bs-tt-validation.html">
+                        Login With Tooltip</a></li>
+                    <li><a href="login-sa-validation.html">
+                        Login With Sweetalert</a></li>
+                    <li><a href="sign-up.html">
+                        Register Simple</a></li>
+                    <li><a href="sign-up-one.html">
+                        Register With Bg Image</a></li>
+                    <li><a href="sign-up-two.html">
+                        Register With Image Two</a></li>
+                    <li><a href="sign-up-wizard.html">
+                        Register Wizard</a></li>
+                    <li><a href="unlock.html">
+                        Unlock User</a></li>
+                    <li><a href="forget-password.html">
+                        Forget Password</a></li>
+                    <li><a href="reset-password.html">
+                        Reset Password</a></li>
+                    <li><a href="maintenance.html">
+                        Maintenance</a></li>
+                  </ul>
+                </li>
+                <li><a class="submenu-title" href="javascript:void(0)">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Coming Soon
+                    <svg class="feather">
+                      <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                    </svg></a>
+                  <ul class="according-submenu">
+                    <li><a href="comingsoon.html">
+                        Coming Simple</a></li>
+                    <li><a href="comingsoon-bg-video.html">
+                        Coming With Bg Video</a></li>
+                    <li><a href="comingsoon-bg-img.html">
+                        Coming With Bg Image</a></li>
+                  </ul>
+                </li>
+                <li><a class="submenu-title" href="javascript:void(0)">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Email Template
+                    <svg class="feather">
+                      <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                    </svg></a>
+                  <ul class="according-submenu">
+                    <li><a href="basic-template.html">
+                        Basic Email</a></li>
+                    <li><a href="email-header.html">
+                        Basic With Header</a></li>
+                    <li><a href="template-email.html">
+                        Ecomerce Template</a></li>
+                    <li><a href="template-email-2.html">
+                        Email Template 2</a></li>
+                    <li><a href="ecommerce-templates.html">
+                        Ecommerce Email</a></li>
+                    <li><a href="email-order-success.html">
+                        Order Success </a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="line"> </li>
+            <li class="sidebar-main-title">MISCELLANEOUS</li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Gallery"></use>
+                </svg><span>Gallery</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="gallery.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Gallery Grid</a></li>
+                <li><a href="gallery-with-description.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Gallery Grid Desc</a></li>
+                <li><a href="gallery-masonry.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Masonry Gallery</a></li>
+                <li><a href="masonry-gallery-with-disc.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Masonry With Desc</a></li>
+                <li><a href="gallery-hover.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Hover Effects</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Game"></use>
+                </svg><span>Blog</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="blog.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Blog Details</a></li>
+                <li><a href="blog-single.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Blog Single</a></li>
+                <li><a href="add-post.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Add Post</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="faq.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Danger"></use>
+                </svg><span>FAQ</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Filter-2"></use>
+                </svg><span>Job Search</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="job-cards-view.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Cards View</a></li>
+                <li><a href="job-list-view.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>List View</a></li>
+                <li><a href="job-details.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Job Details</a></li>
+                <li><a href="job-apply.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Apply</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Work"></use>
+                </svg><span>Learning</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="learning-list-view.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Learning List</a></li>
+                <li><a href="learning-detailed.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Detailed Course</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="pinned-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+                </svg>
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Discovery"></use>
+                </svg><span>Maps</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li><a href="data-map.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Data Maps</a></li>
+                <li><a href="vector-map.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Vector Maps</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="javascript:void(0)">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Shield"></use>
+                </svg><span>Editors</span>
+                <svg class="feather">
+                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#chevron-right"></use>
+                </svg></a>
+              <ul class="sidebar-submenu">
+                <li> <a href="quilleditor.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>Quilljs Editor</a></li>
+                <li><a href="ace-code-editor.html">
+                    <svg class="svg-menu">
+                      <use href="../assets/svg/iconly-sprite.svg#right-3"></use>
+                    </svg>ACE Code Editor</a></li>
+              </ul>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="knowledgebase.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Setting"></use>
+                </svg><span>Knowledgebase</span></a>
+            </li>
+            <li class="sidebar-list">
+              <svg class="pinned-icon">
+                <use href="../assets/svg/iconly-sprite.svg#Pin"></use>
+              </svg><a class="sidebar-link" href="support-ticket.html">
+                <svg class="stroke-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#Ticket"></use>
+                </svg><span>Support Ticket</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="right-arrow" id="right-arrow">
+          <svg class="feather">
+            <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#arrow-right"></use>
+          </svg>
+        </div>
+      </aside>
+      <!-- Page sidebar end-->
+      <div class="page-body">
+        <div class="container-fluid">
+          <div class="row page-title">
+            <div class="col-sm-6">
+              <h3>Project Dashboard</h3>
+            </div>
+            <div class="col-sm-6">
+              <nav>
+                <ol class="breadcrumb justify-content-sm-end align-items-center">
+                  <li class="breadcrumb-item"> <a href="index.html">
+                      <svg class="svg-color">
+                        <use href="../assets/svg/iconly-sprite.svg#Home"></use>
+                      </svg></a></li>
+                  <li class="breadcrumb-item">Dashboard</li>
+                  <li class="breadcrumb-item active">Project Dashboard</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <!-- Container-fluid starts-->
+        <div class="container-fluid project-dashboard">
+          <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <div class="card total-project">
+                <div class="card-header border-dash-bottom">
+                  <h4>Total Project</h4>
+                  <div class="card-icon">
+                    <h3 class="f-w-600">3051</h3>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6 custom-width">
+                      <div class="customer-chart" id="customer-chart"></div>
+                    </div>
+                    <div class="col-6">
+                      <ul class="project-details">
+                        <li class="d-flex align-items-center mt-3 justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <div class="circle-dot-primary"><span></span></div>
+                            <p class="ms-2 f-w-500">Completed Project</p>
+                          </div><span class="ms-1 f-w-500">321</span>
+                        </li>
+                        <li class="d-flex align-items-center mt-3 justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <div class="circle-dot-secondary"><span></span></div>
+                            <p class="ms-2 f-w-500">Inprogress</p>
+                          </div><span class="ms-1 f-w-500">876</span>
+                        </li>
+                        <li class="d-flex align-items-center mt-3 justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <div class="circle-dot-tertiary"><span></span></div>
+                            <p class="ms-2 f-w-500">Yet to Start</p>
+                          </div><span class="ms-1 f-w-500">645</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="card total-revenue">
+                <div class="card-header border-dash-bottom">
+                  <h4>Total Revenue</h4>
+                  <div class="card-icon">
+                    <h3 class="f-w-600">$983731</h3>
+                  </div>
+                </div>
+                <div class="card-body px-0">
+                  <div class="revenuechart" id="revenuechart"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card client-card">
+                <div class="card-header border-dash-bottom">
+                  <h4>Total Clients</h4>
+                  <div class="card-icon">
+                    <h3 class="f-w-600">7465</h3>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-block">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="team-member">
+                        <div class="customers d-inline-block avatar-group">
+                          <ul>
+                            <li class="d-inline-block"><img class="img-52 b-r-8"
+                                src="{{ url_for('static', filename='images/admin/user/7.jpg') }}" alt="#"></li>
+                            <li class="d-inline-block"><img class="img-52 b-r-8"
+                                src="{{ url_for('static', filename='images/admin/user/2.jpg') }}" alt="#"></li>
+                            <li class="d-inline-block"><img class="img-52 b-r-8"
+                                src="{{ url_for('static', filename='images/admin/user/1.jpg') }}" alt="#"></li>
+                            <li class="d-inline-block"><span class="img-52 img-h-52 b-r-10">+4 </span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="project-chart">
+                        <div class="project" id="project"> </div>
+                      </div>
+                    </div>
+                    <div class="client-btn d-flex justify-content-between"><a class="btn btn-secondary"
+                        href="letter-box.html">All Clients</a><a class="btn btn-primary px-5 px-lg-3 px-md-2"
+                        href="list-products.html">Invite</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-xl-4 col-xxl-5">
+              <div class="card">
+                <div class="card-header pb-0">
+                  <h4>Projects Overview</h4>
+                  <div class="dropdown icon-dropdown">
+                    <button class="btn dropdown-toggle" id="userdropdown03" type="button" data-bs-toggle="dropdown"
+                      aria-expanded="false"><i class="icon-more-alt"></i></button>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown03"><a
+                        class="dropdown-item" href="#">Weekly</a><a class="dropdown-item" href="#">Monthly</a><a
+                        class="dropdown-item" href="#">Yearly</a></div>
+                  </div>
+                </div>
+                <div class="card-body pb-xl-0">
+                  <div class="project-overview" id="project-overview"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-xl-8 col-xxl-7">
+              <!-- task menu-->
+              <div class="card">
+                <div class="card-header pb-0">
+                  <h4>Tasks</h4>
+                  <div class="dropdown icon-dropdown">
+                    <button class="btn dropdown-toggle" id="userdropdown02" type="button" data-bs-toggle="dropdown"
+                      aria-expanded="false"><i class="icon-more-alt"></i></button>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown02"><a
+                        class="dropdown-item" href="#">Weekly</a><a class="dropdown-item" href="#">Monthly</a><a
+                        class="dropdown-item" href="#">Yearly</a></div>
+                  </div>
+                </div>
+                <div class="card-body pt-0 task-table">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="d-flex align-items-center gap-2">
+                              <div class="flex-shrink-0">
+                                <svg class="svg-w-19">
+                                  <use href="../assets/svg/iconly-sprite.svg#playbutton"></use>
+                                </svg>
+                              </div>
+                              <div class="flex-grow-1">
+                                <h6 class="f-w-500">Begin from</h6>
+                                <div class="font-light mt-1 timer">
+                                  <svg class="feather me-1">
+                                    <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                                  </svg><span class="f-w-400 f-13">7.00 am</span>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td><a href="user-profile.html">
+                              <h6 class="f-w-500">Search Inspiration For Project</h6>
+                            </a>
+                            <ul class="mt-1">
+                              <li>
+                                <svg class="feather">
+                                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#paperclip"></use>
+                                </svg><span class="f-w-400 f-13">www.dribbble.com</span>
+                              </li>
+                              <li>
+                                <svg class="feather">
+                                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#message-square"></use>
+                                </svg><span class="font-light f-w-400">6 comments</span>
+                              </li>
+                            </ul>
+                          </td>
+                          <td>
+                            <h6 class="f-w-500">60% complete</h6>
+                            <div class="progress-showcase mt-2">
+                              <div class="progress sm-progress-bar progress-border-primary">
+                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="25"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="task-icon-button">
+                              <button class="btn edge-btn f-13 w-75 btn-light-primary">
+                                <svg class="svg-w-19">
+                                  <use href="../assets/svg/iconly-sprite.svg#watch"></use>
+                                </svg><span>Reminder</span>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="d-flex align-items-center gap-2">
+                              <div class="flex-shrink-0">
+                                <svg class="svg-w-19">
+                                  <use href="../assets/svg/iconly-sprite.svg#pushbutton"></use>
+                                </svg>
+                              </div>
+                              <div class="flex-grow-1">
+                                <h6 class="f-w-500">Begin from</h6>
+                                <div class="font-light mt-1 timer">
+                                  <svg class="feather me-1">
+                                    <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                                  </svg><span class="f-w-400 f-13">8.03 am</span>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td><a href="user-profile.html">
+                              <h6 class="f-w-500">Look for Project Ideas</h6>
+                            </a>
+                            <ul class="mt-1">
+                              <li>
+                                <svg class="feather">
+                                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#paperclip"></use>
+                                </svg><span class="f-w-400 f-13">www.dribbble.com</span>
+                              </li>
+                              <li>
+                                <svg class="feather">
+                                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#message-square"></use>
+                                </svg><span class="font-light f-w-400">5 comments</span>
+                              </li>
+                            </ul>
+                          </td>
+                          <td>
+                            <h6 class="f-w-500">80% complete</h6>
+                            <div class="progress-showcase mt-2">
+                              <div class="progress sm-progress-bar progress-border-secondary">
+                                <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="25"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="task-icon-button">
+                              <button class="btn edge-btn f-13 w-75 btn-light-primary">
+                                <svg class="svg-w-19">
+                                  <use href="../assets/svg/iconly-sprite.svg#watch"></use>
+                                </svg><span>Reminder</span>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="d-flex align-items-center gap-2">
+                              <div class="flex-shrink-0">
+                                <svg class="svg-w-19">
+                                  <use href="../assets/svg/iconly-sprite.svg#playbutton"></use>
+                                </svg>
+                              </div>
+                              <div class="flex-grow-1">
+                                <h6 class="f-w-500">Begin from</h6>
+                                <div class="font-light mt-1 timer">
+                                  <svg class="feather me-1">
+                                    <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                                  </svg><span class="f-w-400 f-13">4.12 am</span>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td><a href="user-profile.html">
+                              <h6 class="f-w-500">How can i find inspiration?</h6>
+                            </a>
+                            <ul class="mt-1">
+                              <li>
+                                <svg class="feather">
+                                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#paperclip"></use>
+                                </svg><span class="f-w-400 f-13">www.dribbble.com</span>
+                              </li>
+                              <li>
+                                <svg class="feather">
+                                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#message-square"></use>
+                                </svg><span class="font-light f-w-400">4 comments</span>
+                              </li>
+                            </ul>
+                          </td>
+                          <td>
+                            <h6 class="f-w-500">40% complete</h6>
+                            <div class="progress-showcase mt-2">
+                              <div class="progress sm-progress-bar progress-border-tertiary">
+                                <div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="25"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="task-icon-button">
+                              <button class="btn edge-btn f-13 w-75 btn-light-primary">
+                                <svg class="svg-w-19">
+                                  <use href="../assets/svg/iconly-sprite.svg#watch"></use>
+                                </svg><span>Reminder</span>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="d-flex align-items-center gap-2">
+                              <div class="flex-shrink-0">
+                                <svg class="svg-w-19">
+                                  <use href="../assets/svg/iconly-sprite.svg#playbutton"></use>
+                                </svg>
+                              </div>
+                              <div class="flex-grow-1">
+                                <h6 class="f-w-500">Begin from</h6>
+                                <div class="font-light mt-1 timer">
+                                  <svg class="feather me-1">
+                                    <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                                  </svg><span class="f-w-400 f-13">7.30 am</span>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td><a href="user-profile.html">
+                              <h6 class="f-w-500">Can i execute my idea?</h6>
+                            </a>
+                            <ul class="mt-1">
+                              <li>
+                                <svg class="feather">
+                                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#paperclip"></use>
+                                </svg><span class="f-w-400 f-13">www.dribbble.com</span>
+                              </li>
+                              <li>
+                                <svg class="feather">
+                                  <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#message-square"></use>
+                                </svg><span class="font-light f-w-400">9 comments</span>
+                              </li>
+                            </ul>
+                          </td>
+                          <td>
+                            <h6 class="f-w-500">50% complete</h6>
+                            <div class="progress-showcase mt-2">
+                              <div class="progress sm-progress-bar progress-border-primary">
+                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="25"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="task-icon-button">
+                              <button class="btn edge-btn f-13 w-75 btn-light-primary">
+                                <svg class="svg-w-19">
+                                  <use href="../assets/svg/iconly-sprite.svg#watch"></use>
+                                </svg><span>Reminder</span>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-8">
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- Task menu-->
+                  <div class="card list-card">
+                    <div class="card-header pb-0">
+                      <h4>To-do list</h4>
+                      <div class="dropdown icon-dropdown">
+                        <button class="btn dropdown-toggle" id="userdropdown05" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false"><i class="icon-more-alt"></i></button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown05"><a
+                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item" href="#">Monthly</a><a
+                            class="dropdown-item" href="#">Yearly</a></div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <ul>
+                        <li class="list-item">
+                          <div class="d-flex align-items-center">
+                            <div class="form-check checkbox checkbox-solid-primary">
+                              <input class="form-check-input" type="checkbox" id="solid5">
+                              <label class="form-check-label" for="solid5"></label>
+                            </div>
+                            <h5 class="f-w-500">so powerfully and metaphysically</h5>
+                          </div>
+                          <div>
+                            <button class="btn edge-btn f-12 w-100 btn-light-primary">Today</button>
+                          </div>
+                        </li>
+                        <li class="list-item">
+                          <div class="d-flex align-items-center">
+                            <div class="form-check checkbox checkbox-solid-primary">
+                              <input class="form-check-input" type="checkbox" checked id="solid4">
+                              <label class="form-check-label" for="solid4"></label>
+                            </div>
+                            <h5 class="f-w-500">Create a website page using a prototype.</h5>
+                          </div>
+                          <div>
+                            <button class="btn edge-btn f-12 w-100 btn-light-primary">Today</button>
+                          </div>
+                        </li>
+                        <li class="list-item">
+                          <div class="d-flex align-items-center">
+                            <div class="form-check checkbox checkbox-solid-primary">
+                              <input class="form-check-input" type="checkbox" id="solid3">
+                              <label class="form-check-label" for="solid3"></label>
+                            </div>
+                            <h5 class="f-w-500">Create a new landing page.</h5>
+                          </div>
+                          <div>
+                            <button class="btn edge-btn f-12 w-100 btn-light-secondary">3 Days</button>
+                          </div>
+                        </li>
+                        <li class="list-item">
+                          <div class="d-flex align-items-center">
+                            <div class="form-check checkbox checkbox-solid-primary">
+                              <input class="form-check-input" type="checkbox" id="solid2">
+                              <label class="form-check-label" for="solid2"></label>
+                            </div>
+                            <h5 class="f-w-500">Complete the medical ui system idea.</h5>
+                          </div>
+                          <div>
+                            <button class="btn edge-btn f-12 w-100 btn-light-secondary">3 Days</button>
+                          </div>
+                        </li>
+                        <li class="list-item">
+                          <div class="d-flex align-items-center">
+                            <div class="form-check checkbox checkbox-solid-primary">
+                              <input class="form-check-input" type="checkbox" id="solid1">
+                              <label class="form-check-label" for="solid1"></label>
+                            </div>
+                            <h5 class="f-w-500">Make a new landing page.</h5>
+                          </div>
+                          <div>
+                            <button class="btn edge-btn f-12 w-100 btn-light-secondary">3 Days</button>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header pb-0">
+                      <h4>Activity report</h4>
+                      <div class="dropdown icon-dropdown">
+                        <button class="btn dropdown-toggle" id="userdropdown01" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false"><i class="icon-more-alt"></i></button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown01"><a
+                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item" href="#">Monthly</a><a
+                            class="dropdown-item" href="#">Yearly</a></div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <div class="chart-container chart-height">
+                        <div id="activity-chart"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-6">
+                  <div class="row">
+                    <!-- Task menu-->
+                    <div class="col-xl-12">
+                      <div class="card esatae-card card-hover">
+                        <div class="card-body">
+                          <div class="esatae-body d-flex align-items-center gap-4">
+                            <div class="d-flex gap-3 align-items-center">
+                              <div class="flex-shrink-0 bg-primary">
+                                <svg class="svg-w-24">
+                                  <use href="../assets/svg/iconly-sprite.svg#dash-home"></use>
+                                </svg>
+                              </div>
+                              <div class="flex-grow-1">
+                                <h6 class="f-w-500">Home Estate</h6><span class="f-w-400 f-13">Web Design</span>
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <div class="d-flex">
+                                <h6 class="f-w-500">Progress </h6><span class="f-w-500 f-14">50%</span>
+                              </div>
+                              <div class="progress mt-2 progress-striped-primary">
+                                <div class="progress-bar" style="width: 55%" role="progressbar" aria-valuenow="10"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="customer d-inline-block avatar-group text-end">
+                              <ul>
+                                <li class="d-inline-block"><img class="img-40 b-r-10"
+                                    src="{{ url_for('static', filename='images/admin/avatar/6.jpg') }}" alt=""></li>
+                                <li class="d-inline-block"><img class="img-40 b-r-10"
+                                    src="{{ url_for('static', filename='images/admin/user/8.jpg') }}" alt=""></li>
+                                <li class="d-inline-block"><span class="b-r-10">+4</span></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-12">
+                      <div class="card esatae-card card-hover">
+                        <div class="card-body">
+                          <div class="esatae-body d-flex align-items-center gap-4">
+                            <div class="d-flex gap-3 align-items-center">
+                              <div class="flex-shrink-0 bg-secondary">
+                                <svg class="svg-w-24">
+                                  <use href="../assets/svg/iconly-sprite.svg#dash-development"></use>
+                                </svg>
+                              </div>
+                              <div class="flex-grow-1">
+                                <h6 class="f-w-500">Development</h6><span class="f-w-400 f-13">Coding</span>
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <div class="d-flex">
+                                <h6 class="f-w-500">Progress </h6><span class="f-w-500 f-14">40%</span>
+                              </div>
+                              <div class="progress mt-2 progress-striped-secondary">
+                                <div class="progress-bar" style="width: 55%" role="progressbar" aria-valuenow="10"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="customer d-inline-block avatar-group text-end">
+                              <ul>
+                                <li class="d-inline-block"><img class="img-40 b-r-10"
+                                    src="{{ url_for('static', filename='images/admin/user/6.jpg') }}" alt=""></li>
+                                <li class="d-inline-block"><img class="img-40 b-r-10"
+                                    src="{{ url_for('static', filename='images/admin/user/9.jpg') }}" alt=""></li>
+                                <li class="d-inline-block"><span class="b-r-10">+2</span></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-12">
+                      <div class="card esatae-card card-hover">
+                        <div class="card-body">
+                          <div class="esatae-body d-flex align-items-center gap-4">
+                            <div class="d-flex gap-3 align-items-center">
+                              <div class="flex-shrink-0 bg-tertiary">
+                                <svg class="svg-w-24">
+                                  <use href="../assets/svg/iconly-sprite.svg#dash-vector"></use>
+                                </svg>
+                              </div>
+                              <div class="flex-grow-1">
+                                <h6 class="f-w-500">NFT Design</h6><span class="f-w-400 f-13">Design</span>
+                              </div>
+                            </div>
+                            <div class="flex-grow-1">
+                              <div class="d-flex">
+                                <h6 class="f-w-500">Progress </h6><span class="f-w-500 f-14">90%</span>
+                              </div>
+                              <div class="progress mt-2 progress-striped-tertiary">
+                                <div class="progress-bar" style="width: 55%" role="progressbar" aria-valuenow="10"
+                                  aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                            </div>
+                            <div class="customer d-inline-block avatar-group text-end">
+                              <ul>
+                                <li class="d-inline-block"><img class="img-40 b-r-10"
+                                    src="{{ url_for('static', filename='images/admin/avatar/11.jpg') }}" alt=""></li>
+                                <li class="d-inline-block"><img class="img-40 b-r-10"
+                                    src="{{ url_for('static', filename='images/admin/user/3.jpg') }}" alt=""></li>
+                                <li class="d-inline-block"><span class="b-r-10">+3</span></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-6">
+                  <!-- Bookmark menu-->
+                  <div class="card">
+                    <div class="card-header pb-0">
+                      <h4>Team Members</h4>
+                      <div class="dropdown icon-dropdown">
+                        <button class="btn dropdown-toggle" id="userdropdown04" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false"><i class="icon-more-alt"></i></button>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown04"><a
+                            class="dropdown-item" href="#">Weekly</a><a class="dropdown-item" href="#">Monthly</a><a
+                            class="dropdown-item" href="#">Yearly</a></div>
+                      </div>
+                    </div>
+                    <div class="card-body team-table pt-0">
+                      <div class="table-responsive">
+                        <table class="table table-borderless">
+                          <thead>
+                            <tr>
+                              <th>Client Name</th>
+                              <th>Join Date</th>
+                              <th>Task</th>
+                              <th>Graph</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+
+                            {% for name_pair in names %}
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <div class="flex-shrink-0">
+                                    <img class="img-40 b-r-10"
+                                      src="{{ url_for('static', filename='images/admin/avatar/' + name_pair[3]) }}" alt="">
+                                  </div>
+                                  <div class="flex-grow-1">
+                                    <a href="user-profile.html">
+                                      <h6 class="f-w-500">{{ name_pair[0] }}</h6>
+                                      <span class="font-light f-w-400 f-13">{{ name_pair[1] }}</span>
+                                    </a>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>{{ name_pair[2] }}</td>
+                              <td>256</td>
+                              <td>
+                                <div class="team-chart">
+                                  <div id="team-chart1"></div>
+                                </div>
+                              </td>
+                            </tr>
+                            {% endfor %}
 
 
-<nav class="sidebar">
-<div class="logo d-flex justify-content-between">
-<a class="large_logo" href="index.html"><img src="static/img/logo.png" alt></a>
-<a class="small_logo" href="index.html"><img src="static/img/mini_logo.png" alt></a>
-<div class="sidebar_close_icon d-lg-none">
-<i class="ti-close"></i>
-</div>
-</div>
-<ul id="sidebar_menu">
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/dashboard.svg" alt>
-</div>
-<div class="nav_title">
-<span>User Management </span>
-</div>
-</a>
-<ul>
-<li><a href="index_2.html">Default</a></li>
-<li><a href="index_3.html">Dark Sidebar</a></li>
-<li><a href="index.html">Light Sidebar</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/2.svg" alt>
-</div>
-<div class="nav_title">
-<span>Application </span>
-</div>
-</a>
-<ul>
-<li><a href="editor.html">editor</a></li>
-<li><a href="mail_box.html">Mail Box</a></li>
-<li><a href="chat.html">Chat</a></li>
-<li><a href="faq.html">FAQ</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/3.svg" alt>
-</div>
-<div class="nav_title">
-<span>Pages</span>
-</div>
-</a>
-<ul>
-<li><a href="login.html">Login</a></li>
-<li><a href="resister.html">Register</a></li>
-<li><a href="error_400.html">Error 404</a></li>
-<li><a href="error_500.html">Error 500</a></li>
-<li><a href="forgot_pass.html">Forgot Password</a></li>
-<li><a href="gallery.html">Gallery</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/4.svg" alt>
-</div>
-<div class="nav_title">
-<span>Admins</span>
-</div>
-</a>
-<ul>
-<li><a href="admin_list.html">Admin List</a></li>
-<li><a href="add_new_admin.html">Add New Admin</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/11.svg" alt>
-</div>
-<div class="nav_title">
-<span>Role & Permissions</span>
-</div>
-</a>
-<ul>
-<li><a href="module_setting.html">Module Setting</a></li>
-<li><a href="role_permissions.html">Role & Permissions</a></li>
-</ul>
-</li>
-<li class>
-<a href="navs.html" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/12.svg" alt>
-</div>
-<div class="nav_title">
-<span>Navs</span>
-</div>
-</a>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/5.svg" alt>
-</div>
-<div class="nav_title">
-<span>Users</span>
-</div>
-</a>
-<ul>
-<li><a href="user_list.html">Users List</a></li>
-<li><a href="add_new_user.html">Add New User</a></li>
-</ul>
-</li>
-<li>
-<a href="Builder.html" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/6.svg" alt>
-</div>
-<div class="nav_title">
-<span>Builder </span>
-</div>
-</a>
-</li>
-<li class>
-<a href="invoice.html" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/7.svg" alt>
-</div>
-<div class="nav_title">
-<span>Invoice</span>
-</div>
-</a>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/8.svg" alt>
-</div>
-<div class="nav_title">
-<span>forms</span>
-</div>
-</a>
-<ul>
-<li><a href="Basic_Elements.html">Basic Elements</a></li>
-<li><a href="Groups.html">Groups</a></li>
-<li><a href="Max_Length.html">Max Length</a></li>
-<li><a href="Layouts.html">Layouts</a></li>
-</ul>
-</li>
-<li class>
-<a href="Board.html" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/9.svg" alt>
-</div>
-<div class="nav_title">
-<span>Board</span>
-</div>
-</a>
-</li>
-<li class>
-<a href="calender.html" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/10.svg" alt>
-</div>
-<div class="nav_title">
-<span>Calander</span>
-</div>
-</a>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/11.svg" alt>
-</div>
-<div class="nav_title">
-<span>Themes</span>
-</div>
-</a>
-<ul>
-<li><a href="dark_sidebar.html">Dark Sidebar</a></li>
-<li><a href="light_sidebar.html">light Sidebar</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/12.svg" alt>
-</div>
-<div class="nav_title">
-<span>General</span>
-</div>
-</a>
-<ul>
-<li><a href="Minimized_Aside.html">Minimized Aside</a></li>
-<li><a href="empty_page.html">Empty page</a></li>
-<li><a href="fixed_footer.html">Fixed Footer</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/13.svg" alt>
-</div>
-<div class="nav_title">
-<span>Products</span>
-</div>
-</a>
-<ul>
-<li><a href="Products.html">Products</a></li>
-<li><a href="Product_Details.html">Product Details</a></li>
-<li><a href="Cart.html">Cart</a></li>
-<li><a href="Checkout.html">Checkout</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/14.svg" alt>
-</div>
-<div class="nav_title">
-<span>Icons</span>
-</div>
-</a>
-<ul>
-<li><a href="Fontawesome_Icon.html">Fontawesome Icon</a></li>
-<li><a href="themefy_icon.html">themefy icon</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/15.svg" alt>
-</div>
-<div class="nav_title">
-<span>Animations</span>
-</div>
-</a>
-<ul>
-<li><a href="wow_animation.html">Animate</a></li>
-<li><a href="Scroll_Reveal.html">Scroll Reveal</a></li>
-<li><a href="tilt.html">Tilt Animation</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/16.svg" alt>
-</div>
-<div class="nav_title">
-<span>Components</span>
-</div>
-</a>
-<ul>
-<li><a href="accordion.html">Accordions</a></li>
-<li><a href="Scrollable.html">Scrollable</a></li>
-<li><a href="notification.html">Notifications</a></li>
-<li><a href="carousel.html">Carousel</a></li>
-<li><a href="Pagination.html">Pagination</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/17.svg" alt>
-</div>
-<div class="nav_title">
-<span>Table</span>
-</div>
-</a>
-<ul>
-<li><a href="data_table.html">Data Tables</a></li>
-<li><a href="bootstrap_table.html">Bootstrap</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/18.svg" alt>
-</div>
-<div class="nav_title">
-<span>Cards</span>
-</div>
-</a>
-<ul>
-<li><a href="basic_card.html">Basic Card</a></li>
-<li><a href="theme_card.html">Theme Card</a></li>
-<li><a href="dargable_card.html">Draggable Card</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/19.svg" alt>
-</div>
-<div class="nav_title">
-<span>Charts</span>
-</div>
-</a>
-<ul>
-<li><a href="chartjs.html">ChartJS</a></li>
-<li><a href="apex_chart.html">Apex Charts</a></li>
-<li><a href="chart_sparkline.html">Chart sparkline</a></li>
-<li><a href="am_chart.html">am-charts</a></li>
-<li><a href="nvd3_charts.html">nvd3 charts.</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/20.svg" alt>
-</div>
-<div class="nav_title">
-<span>UI Kits </span>
-</div>
-</a>
-<ul>
-<li><a href="colors.html">colors</a></li>
-<li><a href="Alerts.html">Alerts</a></li>
-<li><a href="buttons.html">Buttons</a></li>
-<li><a href="modal.html">modal</a></li>
-<li><a href="dropdown.html">Droopdowns</a></li>
-<li><a href="Badges.html">Badges</a></li>
-<li><a href="Loading_Indicators.html">Loading Indicators</a></li>
-<li><a href="color_plate.html">Color Plate</a></li>
-<li><a href="typography.html">Typography</a></li>
-<li><a href="datepicker.html">Date Picker</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/21.svg" alt>
-</div>
-<div class="nav_title">
-<span>Widgets</span>
-</div>
-</a>
-<ul>
-<li><a href="chart_box_1.html">Chart Boxes 1</a></li>
-<li><a href="profilebox.html">Profile Box</a></li>
-</ul>
-</li>
-<li class>
-<a class="has-arrow" href="#" aria-expanded="false">
-<div class="nav_icon_small">
-<img src="static/img/menu-icon/12.svg" alt>
-</div>
-<div class="nav_title">
-<span>Maps</span>
-</div>
-</a>
-<ul>
-<li><a href="mapjs.html">Maps JS</a></li>
-<li><a href="vector_map.html">Vector Maps</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-
-<section class="main_content dashboard_part large_header_bg">
-
-<div class="container-fluid g-0">
-<div class="row">
-<div class="col-lg-12 p-0 ">
-<div class="header_iner d-flex justify-content-between align-items-center">
-<div class="sidebar_icon d-lg-none">
-<i class="ti-menu"></i>
-</div>
-<div class="line_icon open_miniSide d-none d-lg-block">
-<img src="static/img/line_img.png" alt>
-</div>
-<div class="serach_field-area d-flex align-items-center">
-<div class="search_inner">
-<form action="#">
-<div class="search_field">
-<input type="text" placeholder="Search">
-</div>
-<button type="submit"> <img src="static/img/icon/icon_search.svg" alt> </button>
-</form>
-</div>
-</div>
-<div class="header_right d-flex justify-content-between align-items-center">
-<div class="header_notification_warp d-flex align-items-center">
-<li>
-<a class="bell_notification_clicker" href="#"> <img src="static/img/icon/bell.svg" alt>
-<span>2</span>
-</a>
-
-<div class="Menu_NOtification_Wrap">
-<div class="notification_Header">
-<h4>Notifications</h4>
-</div>
-<div class="Notification_body">
-
-<div class="single_notify d-flex align-items-center">
-<div class="notify_thumb">
-<a href="#"><img src="static/img/staf/2.png" alt></a>
-</div>
-<div class="notify_content">
-<a href="#"><h5>Cool Marketing </h5></a>
-<p>Lorem ipsum dolor sit amet</p>
-</div>
-</div>
-
-<div class="single_notify d-flex align-items-center">
-<div class="notify_thumb">
-<a href="#"><img src="static/img/staf/4.png" alt></a>
-</div>
-<div class="notify_content">
-<a href="#"><h5>Awesome packages</h5></a>
-<p>Lorem ipsum dolor sit amet</p>
-</div>
-</div>
-
-<div class="single_notify d-flex align-items-center">
-<div class="notify_thumb">
-<a href="#"><img src="static/img/staf/3.png" alt></a>
-</div>
-<div class="notify_content">
-<a href="#"><h5>what a packages</h5></a>
-<p>Lorem ipsum dolor sit amet</p>
-</div>
-</div>
-
-<div class="single_notify d-flex align-items-center">
-<div class="notify_thumb">
-<a href="#"><img src="static/img/staf/2.png" alt></a>
-</div>
-<div class="notify_content">
-<a href="#"><h5>Cool Marketing </h5></a>
-<p>Lorem ipsum dolor sit amet</p>
-</div>
-</div>
-
-<div class="single_notify d-flex align-items-center">
-<div class="notify_thumb">
-<a href="#"><img src="static/img/staf/4.png" alt></a>
-</div>
-<div class="notify_content">
-<a href="#"><h5>Awesome packages</h5></a>
-<p>Lorem ipsum dolor sit amet</p>
-</div>
-</div>
-
-<div class="single_notify d-flex align-items-center">
-<div class="notify_thumb">
-<a href="#"><img src="static/img/staf/3.png" alt></a>
-</div>
-<div class="notify_content">
-<a href="#"><h5>what a packages</h5></a>
-<p>Lorem ipsum dolor sit amet</p>
-</div>
-</div>
-</div>
-<div class="nofity_footer">
-<div class="submit_button text-center pt_20">
-<a href="#" class="btn_1">See More</a>
-</div>
-</div>
-</div>
-
-</li>
-<li>
-<a class="CHATBOX_open" href="#"> <img src="static/img/icon/msg.svg" alt> <span>2</span> </a>
-</li>
-</div>
-<div class="profile_info">
-<img src="static/img/client_img.png" alt="#">
-<div class="profile_info_iner">
-<div class="profile_author_name">
-<p>Neurologist </p>
-<h5>Dr. Robar Smith</h5>
-</div>
-<div class="profile_info_details">
-<a href="#">My Profile </a>
-<a href="#">Settings</a>
-<a href="#">Log Out </a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="main_content_iner overly_inner ">
-<div class="container-fluid p-0 ">
-
-<div class="row">
-<div class="col-12">
-<div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
-<div class="page_title_left d-flex align-items-center">
-<h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
-<ol class="breadcrumb page_bradcam mb-0">
-<li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
-<li class="breadcrumb-item active">Analytic</li>
-</ol>
-</div>
-<div class="page_title_right">
-<div class="page_date_button d-flex align-items-center">
-<img src="static/img/icon/calender_icon.svg" alt>
-August 1, 2020 - August 31, 2020
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row ">
-<div class="col-xl-8 ">
-<div class="white_card mb_30 card_height_100">
-<div class="white_card_header">
-<div class="row align-items-center justify-content-between flex-wrap">
-<div class="col-lg-4">
-<div class="main-title">
-<h3 class="m-0">Stoke Details</h3>
-</div>
-</div>
-<div class="col-lg-4 text-end d-flex justify-content-end">
-<select class="nice_Select2 max-width-220">
-<option value="1">Show by month</option>
-<option value="1">Show by year</option>
-<option value="1">Show by day</option>
-</select>
-</div>
-</div>
-</div>
-<div class="white_card_body">
-<div id="management_bar"></div>
-</div>
-</div>
-</div>
-<div class="col-xl-4 ">
-<div class="white_card card_height_100 mb_30 user_crm_wrapper">
-<div class="row">
-<div class="col-lg-6">
-<div class="single_crm">
-<div class="crm_head d-flex align-items-center justify-content-between">
-<div class="thumb">
-<img src="static/img/crm/businessman.svg" alt>
-</div>
-<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-</div>
-<div class="crm_body">
-<h4>2455</h4>
-<p>User Registrations</p>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_crm ">
-<div class="crm_head crm_bg_1 d-flex align-items-center justify-content-between">
-<div class="thumb">
-<img src="static/img/crm/customer.svg" alt>
-</div>
-<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-</div>
-<div class="crm_body">
-<h4>2455</h4>
-<p>User Registrations</p>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_crm">
-<div class="crm_head crm_bg_2 d-flex align-items-center justify-content-between">
-<div class="thumb">
-<img src="static/img/crm/infographic.svg" alt>
-</div>
-<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-</div>
-<div class="crm_body">
-<h4>2455</h4>
-<p>User Registrations</p>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_crm">
-<div class="crm_head crm_bg_3 d-flex align-items-center justify-content-between">
-<div class="thumb">
-<img src="static/img/crm/sqr.svg" alt>
-</div>
-<i class="fas fa-ellipsis-h f_s_11 white_text"></i>
-</div>
-<div class="crm_body">
-<h4>2455</h4>
-<p>User Registrations</p>
-</div>
-</div>
-</div>
-</div>
-<div class="crm_reports_bnner">
-<div class="row justify-content-end ">
-<div class="col-lg-6">
-<h4>Create CRM Reports</h4>
-<p>Outlines keep you and honest
-indulging honest.</p>
-<a href="#">Read More <i class="fas fa-arrow-right"></i> </a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-xl-4">
-<div class="white_card card_height_100 mb_30">
-<div class="white_card_header">
-<div class="row align-items-center">
-<div class="col-lg-4">
-<div class="main-title">
-<h3 class="m-0">New Users</h3>
-</div>
-</div>
-<div class="col-lg-8">
-<div class="row justify-content-end">
-<div class="col-lg-8 d-flex justify-content-end">
-<div class="serach_field-area theme_bg d-flex align-items-center">
-<div class="search_inner">
-<form action="#">
-<div class="search_field">
-<input type="text" placeholder="Search">
-</div>
-<button type="submit"> <img src="static/img/icon/icon_search.svg" alt> </button>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row justify-content-end">
-<div class="col-lg-4 mt_20">
-<select class="nice_Select2 wide">
-<option value="1">Show by All</option>
-<option value="1">Show by A</option>
-<option value="1">Show by B</option>
-</select>
-</div>
-</div>
-</div>
-<div class="white_card_body ">
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil admin_bg d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Admin
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between mb-0">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-xl-4">
-<div class="white_card card_height_100 mb_30">
-<div class="white_card_header">
-<div class="box_header m-0">
-<div class="main-title">
-<h3 class="m-0">Sales of the last week</h3>
-</div>
-<div class="header_more_tool">
-<div class="dropdown">
-<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-<i class="ti-more-alt"></i>
-</span>
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-<a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-<a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-<a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-<a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="white_card_body">
-<div id="chart-currently"></div>
-<div class="monthly_plan_wraper">
-<div class="single_plan d-flex align-items-center justify-content-between">
-<div class="plan_left d-flex align-items-center">
-<div class="thumb">
-<img src="static/img/icon2/7.svg" alt>
-</div>
-<div>
-<h5>Most Sales</h5>
-<span>Authors with the best sales</span>
-</div>
-</div>
-</div>
-<div class="single_plan d-flex align-items-center justify-content-between">
-<div class="plan_left d-flex align-items-center">
-<div class="thumb">
-<img src="static/img/icon2/6.svg" alt>
-</div>
-<div>
-<h5>Total sales lead</h5>
-<span>40% increased on week-to-week reports</span>
-</div>
-</div>
-</div>
-<div class="single_plan d-flex align-items-center justify-content-between">
-<div class="plan_left d-flex align-items-center">
-<div class="thumb">
-<img src="static/img/icon2/5.svg" alt>
-</div>
-<div>
-<h5>Average Bestseller</h5>
-<span>Pitstop Email Marketing</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-xl-4">
-<div class="white_card card_height_100 mb_30 overflow_hidden">
-<div class="white_card_header">
-<div class="box_header m-0">
-<div class="main-title">
-<h3 class="m-0">Sales Details</h3>
-</div>
-<div class="header_more_tool">
-<div class="dropdown">
-<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-<i class="ti-more-alt"></i>
-</span>
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-<a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-<a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-<a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-<a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="white_card_body pb-0">
-<div class="Sales_Details_plan">
-<div class="row">
-<div class="col-lg-6">
-<div class="single_plan d-flex align-items-center justify-content-between">
-<div class="plan_left d-flex align-items-center">
-<div class="thumb">
-<img src="static/img/icon2/3.svg" alt>
-</div>
-<div>
-<h5>$2,034</h5>
-<span>Author Sales</span>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_plan d-flex align-items-center justify-content-between">
-<div class="plan_left d-flex align-items-center">
-<div class="thumb">
-<img src="static/img/icon2/1.svg" alt>
-</div>
-<div>
-<h5>$706</h5>
-<span>Commision</span>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_plan d-flex align-items-center justify-content-between">
-<div class="plan_left d-flex align-items-center">
-<div class="thumb">
-<img src="static/img/icon2/4.svg" alt>
-</div>
-<div>
-<h5>$49</h5>
-<span>Average Bid</span>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_plan d-flex align-items-center justify-content-between">
-<div class="plan_left d-flex align-items-center">
-<div class="thumb">
-<img src="static/img/icon2/2.svg" alt>
-</div>
-<div>
-<h5>$5.8M</h5>
-<span>All Time Sales</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="chart_wrap overflow_hidden">
-<div id="chart4"></div>
-</div>
-</div>
-</div>
-<div class="col-lg-5">
-<div class="white_card card_height_100 mb_20 ">
-<div class="white_card_header">
-<div class="box_header m-0">
-<div class="main-title">
-<h3 class="m-0">New Products</h3>
-</div>
-<div class="header_more_tool">
-<div class="dropdown">
-<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-<i class="ti-more-alt"></i>
-</span>
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-<a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-<a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-<a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-<a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="white_card_body QA_section">
-<div class="QA_table ">
-
-<table class="table lms_table_active2 p-0">
-<thead>
-<tr>
-<th scope="col">Product 1</th>
-<th scope="col">Price</th>
-<th scope="col">Discount</th>
-<th scope="col">Sold</th>
-<th scope="col">Source</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_1.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 1</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_7">#DE2548</td>
-<td class="f_s_12 f_w_400 color_text_6">60</td>
-<td class="f_s_12 f_w_400 text-end"><a href="#" class="text_color_1">Google</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_2.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 2</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_7">#DE2548</td>
-<td class="f_s_12 f_w_400 color_text_6">60</td>
-<td class="f_s_12 f_w_400 text-end"><a href="#" class="text_color_2">Direct</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_3.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 3</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_7">#DE2548</td>
-<td class="f_s_12 f_w_400 color_text_6">60</td>
-<td class="f_s_12 f_w_400 text-end"><a href="#" class="text_color_1">Google</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_4.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 4</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_7">#DE2548</td>
-<td class="f_s_12 f_w_400 color_text_6">60</td>
-<td class="f_s_12 f_w_400 text-end"><a href="#" class="text_color_1">Refferal</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_5.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 5</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_7">#DE2548</td>
-<td class="f_s_12 f_w_400 color_text_6">60</td>
-<td class="f_s_12 f_w_400 text-end"><a href="#" class="text_color_1">20</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_6.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 6</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_7">#DE2548</td>
-<td class="f_s_12 f_w_400 color_text_6">60</td>
-<td class="f_s_12 f_w_400 text-end"><a href="#" class="text_color_5">Direct</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_6.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 6</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_7">#DE2548</td>
-<td class="f_s_12 f_w_400 color_text_6">60</td>
-<td class="f_s_12 f_w_400 text-end"><a href="#" class="text_color_5">Direct</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="col-xl-7">
-<div class="white_card card_height_100  mb_20">
-<div class="white_card_header">
-<div class="box_header m-0">
-<div class="main-title">
-<h3 class="m-0">Visitors</h3>
-</div>
-<div class="header_more_tool">
-<div class="dropdown">
-<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-<i class="ti-more-alt"></i>
-</span>
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-<a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-<a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-<a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-<a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="white_card_body">
-<div id="world-map-markers" class="dashboard_w_map pb_20"></div>
-<div class="world_list_wraper">
-<div class="row justify-content-center">
-<div class="col-lg-9">
-<div class="row">
-<div class="col-lg-6">
-<div class="single_progressbar">
-<h6 class="f_s_14 f_w_400">USA</h6>
-<div id="bar4" class="barfiller">
-<div class="tipWrap">
-<span class="tip"></span>
-</div>
-<span class="fill" data-percentage="81"></span>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_progressbar">
-<h6>Australia</h6>
-<div id="bar5" class="barfiller">
-<div class="tipWrap">
-<span class="tip"></span>
-</div>
-<span class="fill" data-percentage="58"></span>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_progressbar">
-<h6>Brazil</h6>
-<div id="bar6" class="barfiller">
-<div class="tipWrap">
-<span class="tip"></span>
-</div>
-<span class="fill" data-percentage="42"></span>
-</div>
-</div>
-</div>
-<div class="col-lg-6">
-<div class="single_progressbar">
-<h6>Latvia</h6>
-<div id="bar7" class="barfiller">
-<div class="tipWrap">
-<span class="tip"></span>
-</div>
-<span class="fill" data-percentage="55"></span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4">
-<div class="white_card card_height_100 mb_20 ">
-<div class="white_card_header">
-<div class="box_header m-0">
-<div class="main-title">
-<h3 class="m-0">Stoke Details</h3>
-</div>
-<div class="header_more_tool">
-<div class="dropdown">
-<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-<i class="ti-more-alt"></i>
-</span>
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-<a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-<a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-<a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-<a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="white_card_body QA_section">
-<div class="QA_table ">
-
-<table class="table lms_table_active2 p-0">
-<thead>
-<tr>
-<th scope="col">Product Name</th>
-<th scope="col">Market Price</th>
-<th scope="col">Selling Price</th>
-<th scope="col">Total Unite</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_1.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 1</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_6">$650</td>
-<td class="f_s_12 f_w_400 text-center"><a href="#" class="text_color_1">20</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_2.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 1</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_6">$650</td>
-<td class="f_s_12 f_w_400 text-center"><a href="#" class="text_color_1">20</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_3.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 1</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_6">$650</td>
-<td class="f_s_12 f_w_400 text-center"><a href="#" class="text_color_1">20</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_4.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 1</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_6">$650</td>
-<td class="f_s_12 f_w_400 text-center"><a href="#" class="color_text_6">210</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_5.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 1</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_6">$650</td>
-<td class="f_s_12 f_w_400 text-center"><a href="#" class="text_color_1">210</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_6.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 1</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_6">$650</td>
-<td class="f_s_12 f_w_400 text-center"><a href="#" class="text_color_5">200</a></td>
-</tr>
-<tr>
-<td>
-<div class="customer d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/pro_6.png" alt></div>
-<span class="f_s_12 f_w_600 color_text_5">Product 1</span>
-</div>
-</td>
-<td class="f_s_12 f_w_400 color_text_6">$564</td>
-<td class="f_s_12 f_w_400 color_text_6">$650</td>
-<td class="f_s_12 f_w_400 text-center"><a href="#" class="text_color_5">200</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="col-xl-4">
-<div class="white_card card_height_100 mb_30">
-<div class="white_card_header">
-<div class="box_header m-0">
-<div class="main-title">
-<h3 class="m-0">Recent activity</h3>
-</div>
-<div class="header_more_tool">
-<div class="dropdown">
-<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-<i class="ti-more-alt"></i>
-</span>
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-<a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-<a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-<a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-<a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="white_card_body">
-<div class="Activity_timeline">
-<ul>
-<li>
-<div class="activity_bell"></div>
-<div class="timeLine_inner d-flex align-items-center">
-<div class="activity_wrap">
-<h6>5 min ago</h6>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-</p>
-</div>
-</div>
-</li>
-<li>
-<div class="activity_bell "></div>
-<div class="timeLine_inner d-flex align-items-center">
-<div class="activity_wrap">
-<h6>5 min ago</h6>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-</p>
-</div>
-</div>
-</li>
-<li>
-<div class="activity_bell bell_lite"></div>
-<div class="timeLine_inner d-flex align-items-center">
-<div class="activity_wrap">
-<h6>5 min ago</h6>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-</p>
-</div>
-</div>
-</li>
-<li>
-<div class="activity_bell bell_lite"></div>
-<div class="timeLine_inner d-flex align-items-center">
-<div class="activity_wrap">
-<h6>5 min ago</h6>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque
-</p>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="col-xl-4">
-<div class="white_card card_height_100 mb_30">
-<div class="white_card_header">
-<div class="box_header m-0">
-<div class="main-title">
-<h3 class="m-0">Member request
-to mail.</h3>
-</div>
-<div class="header_more_tool">
-<div class="dropdown">
-<span class="dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown">
-<i class="ti-more-alt"></i>
-</span>
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#"> <i class="ti-eye"></i> Action</a>
-<a class="dropdown-item" href="#"> <i class="ti-trash"></i> Delete</a>
-<a class="dropdown-item" href="#"> <i class="fas fa-edit"></i> Edit</a>
-<a class="dropdown-item" href="#"> <i class="ti-printer"></i> Print</a>
-<a class="dropdown-item" href="#"> <i class="fa fa-download"></i> Download</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="white_card_body">
-<div class="thumb mb_30">
-<img src="static/img/table.svg" alt class="img-fluid">
-</div>
-<div class="common_form">
-<form action="#">
-<div class="row">
-<div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="First Name">
-</div>
-</div>
-<div class="col-lg-6">
-<div class="common_input mb_15">
-<input type="text" placeholder="Last Name">
-</div>
-</div>
-<div class="col-lg-12">
-<div class="common_input mb_15">
-<input type="text" placeholder="Email">
-</div>
-</div>
-<div class="col-lg-6">
-<select class="nice_Select2 nice_Select_line wide">
-<option value="1">Role</option>
-<option value="1">Role 1</option>
-<option value="1">Role2</option>
-</select>
-</div>
-<div class="col-12">
-<div class="create_report_btn mt_30">
-<a href="#" class="btn_1 radius_btn d-block text-center">Send the invitation link</a>
-</div>
-</div>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
-<div class="col-xl-12">
-<div class="white_card card_height_100 mb_30">
-<div class="white_card_header">
-<div class="row align-items-center">
-<div class="col-lg-4">
-<div class="main-title">
-<h3 class="m-0">Stoke Details</h3>
-</div>
-</div>
-<div class="col-lg-8">
-<div class="row justify-content-end">
-<div class="col-lg-8 d-flex justify-content-end">
-<div class="serach_field-area theme_bg d-flex align-items-center">
-<div class="search_inner">
-<form action="#">
-<div class="search_field">
-<input type="text" placeholder="Search">
-</div>
-<button type="submit"> <img src="static/img/icon/icon_search.svg" alt> </button>
-</form>
-</div>
-</div>
-</div>
-<div class="col-lg-2">
-<select class="nice_Select2 wide">
-<option value="1">Show by All</option>
-<option value="1">Show by A</option>
-<option value="1">Show by B</option>
-</select>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="white_card_body ">
-<div class="row min_height_oveflow">
-<div class="col-lg-4 mb_30">
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil admin_bg d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Admin
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-</div>
-<div class="col-lg-4 mb_30">
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil admin_bg d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Admin
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-</div>
-<div class="col-lg-4 mb_30">
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil admin_bg d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Admin
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-<div class="single_user_pil d-flex align-items-center justify-content-between">
-<div class="user_pils_thumb d-flex align-items-center">
-<div class="thumb_34 mr_15 mt-0"><img class="img-fluid radius_50" src="static/img/customers/1.png" alt></div>
-<span class="f_s_14 f_w_400 text_color_11">Jhon Smith</span>
-</div>
-<div class="user_info">
-Customer
-</div>
-<div class="action_btns d-flex">
-<a href="#" class="action_btn mr_10"> <i class="far fa-edit"></i> </a>
-<a href="#" class="action_btn"> <i class="fas fa-trash"></i> </a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="footer_part">
-<div class="container-fluid">
-<div class="row">
-<div class="col-lg-12">
-<div class="footer_iner text-center">
-<p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Dashboard</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
 
 
-<div class="CHAT_MESSAGE_POPUPBOX">
-<div class="CHAT_POPUP_HEADER">
-<div class="MSEESAGE_CHATBOX_CLOSE">
-<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7.09939 5.98831L11.772 10.661C12.076 10.965 12.076 11.4564 11.772 11.7603C11.468 12.0643 10.9766 12.0643 10.6726 11.7603L5.99994 7.08762L1.32737 11.7603C1.02329 12.0643 0.532002 12.0643 0.228062 11.7603C-0.0760207 11.4564 -0.0760207 10.965 0.228062 10.661L4.90063 5.98831L0.228062 1.3156C-0.0760207 1.01166 -0.0760207 0.520226 0.228062 0.216286C0.379534 0.0646715 0.578697 -0.0114918 0.777717 -0.0114918C0.976738 -0.0114918 1.17576 0.0646715 1.32737 0.216286L5.99994 4.889L10.6726 0.216286C10.8243 0.0646715 11.0233 -0.0114918 11.2223 -0.0114918C11.4213 -0.0114918 11.6203 0.0646715 11.772 0.216286C12.076 0.520226 12.076 1.01166 11.772 1.3156L7.09939 5.98831Z" fill="white" />
-</svg>
-</div>
-<h3>Chat with us</h3>
-<div class="Chat_Listed_member">
-<ul>
-<li>
-<a href="#">
-<div class="member_thumb">
-<img src="static/img/staf/1.png" alt>
-</div>
-</a>
-</li>
-<li>
-<a href="#">
-<div class="member_thumb">
-<img src="static/img/staf/2.png" alt>
-</div>
-</a>
-</li>
-<li>
-<a href="#">
-<div class="member_thumb">
-<img src="static/img/staf/3.png" alt>
-</div>
-</a>
-</li>
-<li>
-<a href="#">
-<div class="member_thumb">
-<img src="static/img/staf/4.png" alt>
-</div>
-</a>
-</li>
-<li>
-<a href="#">
-<div class="member_thumb">
-<img src="static/img/staf/5.png" alt>
-</div>
-</a>
-</li>
-<li>
-<a href="#">
-<div class="member_thumb">
-<div class="more_member_count">
-<span>90+</span>
-</div>
-</div>
-</a>
-</li>
-</ul>
-</div>
-</div>
-<div class="CHAT_POPUP_BODY">
-<p class="mesaged_send_date">
-Sunday, 12 January
-</p>
-<div class="CHATING_SENDER">
-<div class="SMS_thumb">
-<img src="static/img/staf/1.png" alt>
-</div>
-<div class="SEND_SMS_VIEW">
-<P>Hi! Welcome .
-How can I help you?</P>
-</div>
-</div>
-<div class="CHATING_SENDER CHATING_RECEIVEr">
-<div class="SEND_SMS_VIEW">
-<P>Hello</P>
-</div>
-<div class="SMS_thumb">
-<img src="static/img/staf/1.png" alt>
-</div>
-</div>
-</div>
-<div class="CHAT_POPUP_BOTTOM">
-<div class="chat_input_box d-flex align-items-center">
-<div class="input-group">
-<input type="text" class="form-control" placeholder="Write your message" aria-label="Recipient's username" aria-describedby="basic-addon2">
-<div class="input-group-append">
-<button class="btn " type="button">
 
-<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M18.7821 3.21895C14.4908 -1.07281 7.50882 -1.07281 3.2183 3.21792C-1.07304 7.50864 -1.07263 14.4908 3.21872 18.7824C7.50882 23.0729 14.4908 23.0729 18.7817 18.7815C23.0726 14.4908 23.0724 7.50906 18.7821 3.21895ZM17.5813 17.5815C13.9525 21.2103 8.04773 21.2108 4.41871 17.5819C0.78907 13.9525 0.789485 8.04714 4.41871 4.41832C8.04752 0.789719 13.9521 0.789304 17.5817 4.41874C21.2105 8.04755 21.2101 13.9529 17.5813 17.5815ZM6.89503 8.02162C6.89503 7.31138 7.47107 6.73534 8.18131 6.73534C8.89135 6.73534 9.46739 7.31117 9.46739 8.02162C9.46739 8.73228 8.89135 9.30811 8.18131 9.30811C7.47107 9.30811 6.89503 8.73228 6.89503 8.02162ZM12.7274 8.02162C12.7274 7.31138 13.3038 6.73534 14.0141 6.73534C14.7241 6.73534 15.3002 7.31117 15.3002 8.02162C15.3002 8.73228 14.7243 9.30811 14.0141 9.30811C13.3038 9.30811 12.7274 8.73228 12.7274 8.02162ZM15.7683 13.2898C14.9712 15.1332 13.1043 16.3243 11.0126 16.3243C8.8758 16.3243 6.99792 15.1272 6.22834 13.2744C6.09642 12.9573 6.24681 12.593 6.56438 12.4611C6.64238 12.4289 6.72328 12.4136 6.80293 12.4136C7.04687 12.4136 7.27836 12.5577 7.37772 12.7973C7.95376 14.1842 9.38048 15.0799 11.0126 15.0799C12.6077 15.0799 14.0261 14.1836 14.626 12.7959C14.7625 12.4804 15.1288 12.335 15.4441 12.4717C15.7594 12.6084 15.9048 12.9745 15.7683 13.2898Z" fill="#707DB7" />
-</svg>
-
-</button>
-<button class="btn" type="button">
-
-<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11 0.289062C4.92455 0.289062 0 5.08402 0 10.9996C0 16.9152 4.92455 21.7101 11 21.7101C17.0755 21.7101 22 16.9145 22 10.9996C22 5.08472 17.0755 0.289062 11 0.289062ZM11 20.3713C5.68423 20.3713 1.375 16.1755 1.375 10.9996C1.375 5.82371 5.68423 1.62788 11 1.62788C16.3158 1.62788 20.625 5.82371 20.625 10.9996C20.625 16.1755 16.3158 20.3713 11 20.3713ZM15.125 10.3302H11.6875V6.98314C11.6875 6.61363 11.3795 6.31373 11 6.31373C10.6205 6.31373 10.3125 6.61363 10.3125 6.98314V10.3302H6.875C6.4955 10.3302 6.1875 10.6301 6.1875 10.9996C6.1875 11.3691 6.4955 11.669 6.875 11.669H10.3125V15.016C10.3125 15.3855 10.6205 15.6854 11 15.6854C11.3795 15.6854 11.6875 15.3855 11.6875 15.016V11.669H15.125C15.5045 11.669 15.8125 11.3691 15.8125 10.9996C15.8125 10.6301 15.5045 10.3302 15.125 10.3302Z" fill="#707DB7" />
-</svg>
-
-<input type="file">
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div id="back-top" style="display: none;">
-<a title="Go to Top" href="#">
-<i class="ti-angle-up"></i>
-</a>
-</div>
-
-<script src="js/jquery1-3.4.1.min.js"></script>
-
-<script src="js/popper1.min.js"></script>
-
-<script src="js/bootstrap1.min.js"></script>
-
-<script src="js/metisMenu.js"></script>
-
-<script src="vendors/count_up/jquery.waypoints.min.js"></script>
-
-<script src="vendors/chartlist/Chart.min.js"></script>
-
-<script src="vendors/count_up/jquery.counterup.min.js"></script>
-
-<script src="vendors/niceselect/js/jquery.nice-select.min.js"></script>
-
-<script src="vendors/owl_carousel/js/owl.carousel.min.js"></script>
-
-<script src="vendors/datatable/js/jquery.dataTables.min.js"></script>
-<script src="vendors/datatable/js/dataTables.responsive.min.js"></script>
-<script src="vendors/datatable/js/dataTables.buttons.min.js"></script>
-<script src="vendors/datatable/js/buttons.flash.min.js"></script>
-<script src="vendors/datatable/js/jszip.min.js"></script>
-<script src="vendors/datatable/js/pdfmake.min.js"></script>
-<script src="vendors/datatable/js/vfs_fonts.js"></script>
-<script src="vendors/datatable/js/buttons.html5.min.js"></script>
-<script src="vendors/datatable/js/buttons.print.min.js"></script>
-
-<script src="vendors/datepicker/datepicker.js"></script>
-<script src="vendors/datepicker/datepicker.en.js"></script>
-<script src="vendors/datepicker/datepicker.custom.js"></script>
-<script src="js/chart.min.js"></script>
-<script src="vendors/chartjs/roundedBar.min.js"></script>
-
-<script src="vendors/progressbar/jquery.barfiller.js"></script>
-
-<script src="vendors/tagsinput/tagsinput.js"></script>
-
-<script src="vendors/text_editor/summernote-bs4.js"></script>
-<script src="vendors/am_chart/amcharts.js"></script>
-
-<script src="vendors/scroll/perfect-scrollbar.min.js"></script>
-<script src="vendors/scroll/scrollable-custom.js"></script>
-
-<script src="vendors/vectormap-home/vectormap-2.0.2.min.js"></script>
-<script src="vendors/vectormap-home/vectormap-world-mill-en.js"></script>
-
-<script src="vendors/apex_chart/apex-chart2.js"></script>
-<script src="vendors/apex_chart/apex_dashboard.js"></script>
-
-<script src="vendors/chart_am/core.js"></script>
-<script src="vendors/chart_am/charts.js"></script>
-<script src="vendors/chart_am/animated.js"></script>
-<script src="vendors/chart_am/kelly.js"></script>
-<script src="vendors/chart_am/chart-custom.js"></script>
-
-<script src="js/dashboard_init.js"></script>
-<script src="js/custom.js"></script>
+                            <!-- <tr>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <div class="flex-shrink-0"><img class="img-40 b-r-10"
+                                      src="{{ url_for('static', filename='images/admin/avatar/10.jpg') }}" alt=""></div>
+                                  <div class="flex-grow-1"><a href="user-profile.html">
+                                      <h6 class="f-w-500">Rick Novak</h6><span
+                                        class="font-light f-w-400 f-13">rick35@gmail.com</span>
+                                    </a></div>
+                                </div>
+                              </td>
+                              <td>Website</td>
+                              <td>256</td>
+                              <td>
+                                <div class="team-chart">
+                                  <div id="team-chart1"></div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <div class="flex-shrink-0"><img class="img-40 b-r-10"
+                                      src="{{ url_for('static', filename='images/admin/avatar/11.jpg') }}" alt=""></div>
+                                  <div class="flex-grow-1"><a href="user-profile.html">
+                                      <h6 class="f-w-500">Susan Connor</h6><span
+                                        class="font-light f-w-400 f-13">susan6@gmail.com</span>
+                                    </a></div>
+                                </div>
+                              </td>
+                              <td>Mobile App</td>
+                              <td>145</td>
+                              <td>
+                                <div class="team-chart">
+                                  <div id="team-chart2"></div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <div class="flex-shrink-0"><img class="img-40 b-r-10"
+                                      src="{{ url_for('static', filename='images/admin/avatar/1.jpg') }}" alt=""></div>
+                                  <div class="flex-grow-1"><a href="user-profile.html">
+                                      <h6 class="f-w-500">Roger Lum</h6><span
+                                        class="font-light f-w-400 f-13">roger8@gmail.com</span>
+                                    </a></div>
+                                </div>
+                              </td>
+                              <td>Wordpress</td>
+                              <td>956</td>
+                              <td>
+                                <div class="team-chart">
+                                  <div id="team-chart3"></div>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center gap-2">
+                                  <div class="flex-shrink-0"><img class="img-40 b-r-10"
+                                      src="{{ url_for('static', filename='images/admin/avatar/3.jpg') }}" alt=""></div>
+                                  <div class="flex-grow-1"><a href="user-profile.html">
+                                      <h6 class="f-w-500">Jeff Johnson</h6><span
+                                        class="font-light f-w-400 f-13">jeff761@gmail.com</span>
+                                    </a></div>
+                                </div>
+                              </td>
+                              <td>Nft Web Page</td>
+                              <td>324</td>
+                              <td>
+                                <div class="team-chart">
+                                  <div id="team-chart4"></div>
+                                </div>
+                              </td>
+                            </tr> -->
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-xl-4">
+              <!-- timeline mixin-->
+              <div class="card calendar-box">
+                <div class="card-header border-dash-bottom">
+                  <h4>Today</h4><span>UI/UX designer</span>
+                  <div class="card-icon"><a class="btn btn-primary" href="calendar-basic.html">Add Task</a></div>
+                </div>
+                <div class="card-body">
+                  <div class="border-dash-bottom" id="calendar"></div>
+                  <div class="row align-items-center">
+                    <div class="col-2">
+                      <ul class="d-flex flex-column gap-4">
+                        <li> <span class="font-light">10:00 </span></li>
+                        <li> <span class="font-light">11:00</span></li>
+                        <li> <span class="font-light">12:00</span></li>
+                        <li> <span class="font-light">13:00</span></li>
+                        <li> <span class="font-light">14:00</span></li>
+                      </ul>
+                    </div>
+                    <div class="col-10 timeline-items">
+                      <div class="timeline-box d-flex align-items-center b-w-39 b-t-primary">
+                        <div class="flex-grow-1">
+                          <h6 class="f-15 f-w-600 mb-1">Design meeting</h6>
+                          <div class="font-light">
+                            <svg class="feather">
+                              <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                            </svg><span class="font-light f-w-400 f-14">2 hours</span>
+                          </div>
+                        </div>
+                        <div class="team-member text-end">
+                          <div class="customers d-inline-block avatar-group">
+                            <ul>
+                              <li class="d-inline-block"><img class="img-38 b-r-8"
+                                  src="{{ url_for('static', filename='images/admin/user/13.jpg') }}" alt="#"></li>
+                              <li class="d-inline-block"><img class="img-38 b-r-8"
+                                  src="{{ url_for('static', filename='images/admin/user/6.jpg') }}" alt="#"></li>
+                              <li class="d-inline-block"><img class="img-38 b-r-8"
+                                  src="{{ url_for('static', filename='images/admin/user/3.jpg') }}" alt="#"></li>
+                              <li class="d-inline-block"><span class="b-r-10">+4</span></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <hr class="my-4">
+                      <div class="timeline-box d-flex align-items-center b-w-39 b-t-secondary">
+                        <div class="flex-grow-1">
+                          <h6 class="f-15 f-w-600 mb-1">Weekly scurm Meeting</h6>
+                          <div class="font-light">
+                            <svg class="feather">
+                              <use href="../assets/svg/feather-icons/dist/feather-sprite.svg#clock"></use>
+                            </svg><span class="font-light f-w-400 f-14">2 hours</span>
+                          </div>
+                        </div>
+                        <div class="team-member text-end">
+                          <div class="customers d-inline-block avatar-group">
+                            <ul>
+                              <li class="d-inline-block"><img class="img-38 b-r-8"
+                                  src="{{ url_for('static', filename='images/admin/user/14.jpg') }}" alt="#"></li>
+                              <li class="d-inline-block"><img class="img-38 b-r-8"
+                                  src="{{ url_for('static', filename='images/admin/user/9.jpg') }}" alt="#"></li>
+                              <li class="d-inline-block"><img class="img-38 b-r-8"
+                                  src="{{ url_for('static', filename='images/admin/user/11.jpg') }}" alt="#"></li>
+                              <li class="d-inline-block"><span class="b-r-10">+2</span></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Container-fluid ends-->
+      </div>
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 footer-copyright">
+              <p class="mb-0">Copyright 2024 © Edmin Template by pixelstrap.</p>
+            </div>
+            <div class="col-md-6">
+              <p class="float-end mb-0">Hand crafted &amp; made with
+                <svg class="svg-color footer-icon">
+                  <use href="../assets/svg/iconly-sprite.svg#footer-heart"></use>
+                </svg>
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+  <!-- jquery-->
+  <script src="{{ url_for('static', filename='js/admin/vendors/jquery/dist/jquery.min.js') }}"></script>
+  <!-- bootstrap js-->
+  <script src="{{ url_for('static', filename='js/admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/admin/config.js') }}"></script>
+  <!-- Sidebar js-->
+  <script src="{{ url_for('static', filename='js/admin/sidebar.js') }}"></script>
+  <!-- Apexchart js-->
+  <script src="{{ url_for('static', filename='js/admin/vendors/apexcharts/dist/apexcharts.min.js') }}"></script>
+  <!-- dashboard 3 js-->
+  <script src="{{ url_for('static', filename='js/admin/dashboard/dashboard-3.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/admin/datepicker/custom-datepicker.js') }}"></script>
+  <!-- scrollbar js-->
+  <script src="{{ url_for('static', filename='js/admin/scrollbar/simplebar.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/admin/scrollbar/custom.js') }}"></script>
+  <!-- scrollable-->
+  <!-- customizer-->
+  <script src="{{ url_for('static', filename='js/admin/theme-customizer/customizer.js') }}"></script>
+  <!-- custom script -->
+  <script src="{{ url_for('static', filename='js/admin/script.js') }}"></script>
 </body>
+
 </html>

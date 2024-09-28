@@ -3,6 +3,7 @@ const sendButton = document.querySelector("#send-btn");
 const chatContainer = document.querySelector(".chat-container");
 const themeButton = document.querySelector("#theme-btn");
 const deleteButton = document.querySelector("#delete-btn");
+const logoutButton = document.querySelector("#logout-btn");
 
 let userText = null;
 const API_KEY = "PASTE-YOUR-API-KEY-HERE"; // Paste your API key here
@@ -92,7 +93,7 @@ const showTypingAnimation = () => {
 
 const handleOutgoingChat = () => {
     userText = chatInput.value.trim(); // Get chatInput value and remove extra spaces
-    if(!userText) return; // If chatInput is empty return from here
+    if (!userText) return; // If chatInput is empty return from here
 
     // Clear the input field and reset its height
     chatInput.value = "";
@@ -115,7 +116,7 @@ const handleOutgoingChat = () => {
 
 deleteButton.addEventListener("click", () => {
     // Remove the chats from local storage and call loadDataFromLocalstorage function
-    if(confirm("Are you sure you want to delete all the chats?")) {
+    if (confirm("Are you sure you want to delete all the chats?")) {
         localStorage.removeItem("all-chats");
         loadDataFromLocalstorage();
     }
@@ -128,11 +129,38 @@ themeButton.addEventListener("click", () => {
     themeButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
 });
 
+logoutButton.addEventListener("click", () => {
+    const API_URL = "/logout";
+    if (confirm("Are you sure you want to exit the chatroom?")) {
+        localStorage.removeItem("all-chats");
+        loadDataFromLocalstorage();
+        // send post request to API_URL, there is no attachment file
+        fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            // You can send an empty body or add any other necessary data
+            body: JSON.stringify({})
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Logged out successfully.");
+                // redirect to homepage
+                window.location.href = "/";
+            } else {
+                console.error("Logout failed.");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
+});
+
 const initialInputHeight = chatInput.scrollHeight;
 
-chatInput.addEventListener("input", () => {   
+chatInput.addEventListener("input", () => {
     // Adjust the height of the input field dynamically based on its content
-    chatInput.style.height =  `${initialInputHeight}px`;
+    chatInput.style.height = `${initialInputHeight}px`;
     chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
 

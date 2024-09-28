@@ -7,6 +7,7 @@ import database as db
 import bcrypt
 import re
 import google.generativeai as genai
+from datetime import datetime
 
 
 
@@ -266,7 +267,9 @@ def signup_admin():
 
         hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
-        db.create_user(database="admins", first_name=first_name, family_name=family_name, email=email, password=hashed_password)
+        join_time = datetime.now()
+
+        db.create_user(database="admins", first_name=first_name, family_name=family_name, email=email, password=hashed_password, join_time=join_time)
 
         flash('Account created successfully. Please contact Prof. Nait-ali to activate your account.')
 
@@ -332,7 +335,9 @@ def signup_student():
 
         hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
-        db.create_user(database="students", first_name=first_name, family_name=family_name, email=email, password=hashed_password, student_number=student_number)
+        join_time = datetime.now()
+
+        db.create_user(database="students", first_name=first_name, family_name=family_name, email=email, password=hashed_password, join_time=join_time, student_number=student_number)
 
         flash('Account created successfully. Please contact the administration to activate your account.')
 
@@ -395,8 +400,9 @@ def signup_guest():
 
         hashed_password = bcrypt.hashpw(password1.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
+        join_time = datetime.now()
 
-        db.create_user(database="guests", first_name=first_name, family_name=family_name, email=email, password=hashed_password)
+        db.create_user(database="guests", first_name=first_name, family_name=family_name, email=email, password=hashed_password, join_time=join_time)
 
         result = send_activation_email(email, first_name)
 
@@ -615,14 +621,50 @@ def update_password_admin():
     return redirect(url_for('signin_admin'))
 
 
+def time_since(dt):
+    now = datetime.now()
+    delta = now - dt
+    
+    seconds = delta.total_seconds()
+    
+    if seconds < 60:
+        return f"{int(seconds)} seconds before"
+    elif seconds < 3600:
+        minutes = seconds // 60
+        return f"{int(minutes)} minutes before"
+    elif seconds < 86400:
+        hours = seconds // 3600
+        return f"{int(hours)} hours before"
+    elif seconds < 604800:  # 7 days
+        days = seconds // 86400
+        return f"{int(days)} days before"
+    elif seconds < 31536000:  # 365 days
+        weeks = seconds // 604800
+        return f"{int(weeks)} weeks before"
+    else:
+        years = seconds // 31536000
+        return f"{int(years)} years before"
+
+
 # a dashboard to manupulate tables of database
 @app.route('/admin-dash')
 def admin_dashboard():
 
-    # tables = db.get_tables()
-    # new_registers = db.read_pending_activations(["students"])
-    # return render_template('admin-dash.html', tables=tables, new_registers=new_registers, enumerate=enumerate)
-    return render_template('admin-dash.html')
+    # names = [["Masoud Navidi", "navidi.m.91@gmail.com", "2 weeks ago", "11.jpg"], ["Arezoo Ghodsifard", "ghodsifard.arezoo@gmail.com", "2 days ago", "1.jpg"]]
+
+    admins = db.read_admins()  
+
+    names = []
+
+    for admin in admins:
+        name = admin[1] + " " + admin[2]
+        email = admin[3]
+        raw_date = admin[6]
+        date = time_since(raw_date)
+
+        names.append([name, email, date, "11.jpg"])
+    
+    return render_template('admin-dash.html', names=names, enumerate=enumerate)
 
 
 @app.route('/dashboard-activations')
@@ -653,14 +695,10 @@ def show_tables():
     return render_template('show-tables.html', tables=tables)
 
 
-@app.route("/logout")
+@app.route("/logout", methods=["GET", "POST"])
 def logout():
     flask_session.pop("user_id")
     return redirect(url_for("index"))
-
-
-
-
 
 
 @app.route('/gen-response', methods=['POST'])

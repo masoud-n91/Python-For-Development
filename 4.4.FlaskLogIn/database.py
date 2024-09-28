@@ -2,6 +2,7 @@ import psycopg2
 from dotenv import load_dotenv
 import os
 from pydantic import BaseModel
+from datetime import datetime
 
 
 class User(BaseModel):
@@ -11,6 +12,7 @@ class User(BaseModel):
     email: str
     password: str
     is_active: bool
+    join_time: datetime
 
 load_dotenv()
 
@@ -226,16 +228,28 @@ def get_student_by_id(id):
     return None
 
 
-def create_user(database, first_name, family_name, email, password, student_number = None):
+def read_admins():
+    connection, cursor = auth_connection()
+    table = "admins"
+    query = f"SELECT * FROM {table}"
+    cursor.execute(query)
+    admins = cursor.fetchall()
+    cursor.close()
+    connection.close()
+
+    return admins
+
+
+def create_user(database, first_name, family_name, email, password, join_time, student_number = None):
     connection, cursor = auth_connection()
     table = database
     
     if table == "students":
-        query = f"INSERT INTO {table} (first_name, family_name, student_number, email, password, is_active) VALUES (%s, %s, %s, %s, %s, %s)"
-        values = (first_name, family_name, student_number, email, password, False)
+        query = f"INSERT INTO {table} (first_name, family_name, student_number, email, password, is_active, join_time) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        values = (first_name, family_name, student_number, email, password, False, join_time)
     else:
-        query = f"INSERT INTO {table} (first_name, family_name, email, password, is_active) VALUES (%s, %s, %s, %s, %s)"
-        values = (first_name, family_name, email, password, False)
+        query = f"INSERT INTO {table} (first_name, family_name, email, password, is_active, join_time) VALUES (%s, %s, %s, %s, %s, %s)"
+        values = (first_name, family_name, email, password, False, join_time)
     
     cursor.execute(query, values)
     connection.commit()

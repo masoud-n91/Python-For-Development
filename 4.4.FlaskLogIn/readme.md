@@ -48,7 +48,6 @@ This is a web application for a chatbot developed using Python (Flask) as the ba
 
    GOOGLE_API_KEY=your_google_api_key
 
-   MYSQL_PORT=your_mysql_port
    POSTGRES_PORT=your_postgres_port
    ```
 
