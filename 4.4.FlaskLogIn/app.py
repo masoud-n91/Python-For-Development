@@ -9,6 +9,12 @@ import re
 import google.generativeai as genai
 from datetime import datetime
 
+# for AI
+from PIL import Image
+import numpy as np
+from src.face_analysis import FaceAnalysis
+from utils.image import encode_image
+
 
 
 load_dotenv()
@@ -236,7 +242,7 @@ def signin_admin():
             flash('Invalid email or password. Please try again.')
             return render_template("signin-admin.html")
 
-        flask_session["user_id"] = ["admins", email]
+        flask_session["user_id"] = ["admins", email, admin_user.first_name + " " + admin_user.family_name]
         return redirect(url_for('admin_dashboard'))
 
 
@@ -300,7 +306,7 @@ def signin_student():
             flash('Invalid email or password. Please try again.')
             return render_template("signin-student.html")
 
-        flask_session["user_id"] = ["students", email]
+        flask_session["user_id"] = ["students", email, student_user.first_name + " " + student_user.family_name]
         return redirect(url_for('chatbot_student'))
 
 
@@ -356,6 +362,8 @@ def signin_guest():
         password = request.form['password']
 
         guest_user = db.get_guest_by_email(email)
+
+        print("guest_user: ", guest_user)
         
         if not guest_user:
             flash('Invalid email or password. Please try again.')
@@ -369,8 +377,8 @@ def signin_guest():
             flash('Invalid email or password. Please try again.')
             return render_template("signin-guest.html")
 
-        flask_session["user_id"] = ["guests", email]
-        return redirect(url_for('chatbot_guest'))
+        flask_session["user_id"] = ["guests", email, guest_user.first_name + " " + guest_user.family_name]
+        return redirect(url_for('webapp_guest'))
 
 
 # this signup page is just the same as signin page but the slider is overlapping with signin
@@ -646,11 +654,8 @@ def time_since(dt):
         return f"{int(years)} years before"
 
 
-# a dashboard to manupulate tables of database
 @app.route('/admin-dash')
 def admin_dashboard():
-
-    # names = [["Masoud Navidi", "navidi.m.91@gmail.com", "2 weeks ago", "11.jpg"], ["Arezoo Ghodsifard", "ghodsifard.arezoo@gmail.com", "2 days ago", "1.jpg"]]
 
     admins = db.read_admins()  
 
@@ -711,7 +716,6 @@ def generate_response():
 
         response = chat_session.send_message(user_text)
         response_text = response.text
-        # response_text = "Your response to the prompt: " + user_text
 
         response_data = {
             'choices': [
@@ -742,7 +746,15 @@ def contact():
     return render_template("contact.html")
 
 
-
+@app.route("/webapp-guest")
+def webapp_guest():
+    user_id = flask_session.get("user_id")
+    print(f"session: {flask_session}")
+    if not user_id:
+        flash("Please log-in", "warning")
+        return redirect(url_for('virtual1'))
+    
+    return render_template("webapp-guest.html", username=user_id[2])
 
 
 # these enpoints must connect to the chatbot app
@@ -750,18 +762,139 @@ def contact():
 def chatbot_guest():
     user_id = flask_session.get("user_id")
     if not user_id:
-        return redirect(url_for('index'))
+        flash("Please log-in", "warning")
+        return redirect(url_for('virtual1'))
     return render_template('chatbot-guest.html')
 
 
 @app.route('/chatbot-student')
 def chatbot_student():
+    user_id = flask_session.get("user_id")
+    if not user_id:
+        flash("Please log-in", "warning")
+        return redirect(url_for('virtual1'))
     return render_template('chatbot-student.html')
 
 
 @app.route('/chatbot-admin')
 def chatbot_admin():
+    user_id = flask_session.get("user_id")
+    if not user_id:
+        flash("Please log-in", "warning")
+        return redirect(url_for('virtual1'))
     return render_template('chatbot-admin.html')
 
 
+# ai endpoints:
+
+app.config["ALLOWED_EXTENSIONS"] = {'png', 'jpg', 'jpeg'}
+
+face_analysis = FaceAnalysis("models/det_10g.onnx", "models/genderage.onnx")
+
+
+def allowed_files(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config["ALLOWED_EXTENSIONS"]
+
+
+@app.route("/ai-face-analysis", methods=["GET", "POST"])
+def ai_face_analysis():
+    user_id = flask_session.get("user_id")
+    if not user_id:
+        flash("Please log-in", "warning")
+        return redirect(url_for('virtual1'))
+
+    if request.method == 'POST':
+        image = request.files['image']
+        if image.filename == "":
+            flash("No selected file", "warning")
+            return redirect(url_for("ai_face_analysis"))
+
+        if image and allowed_files(image.filename):
+            try:
+                input_image = Image.open(image.stream)
+                input_image = np.array(input_image)
+                output_image, genders, ages = face_analysis.detect_age_gender(input_image)
+                image_uri = encode_image(output_image)
+
+                return render_template("ai-face-analysis.html", genders=genders, ages=ages, image_uri=image_uri, username=user_id[2])
+            except Exception as e:
+                flash(f"Error processing image: {e}", "danger")
+                return redirect(url_for("ai_face_analysis"))
+        flash("File type not allowed", "warning")
+        return redirect(url_for("ai_face_analysis"))
+    
+    return render_template("ai-face-analysis.html", username=user_id[2])
+
+
+def calculate_bmr(weight, height, age, gender):
+    if gender == 'male':
+        bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
+    else:
+        bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age)
+    return bmr
+
+
+@app.route("/bmr", methods=["GET", "POST"])
+def bmr():
+    print("BMR CALLED")
+    user_id = flask_session.get("user_id")
+    if not user_id:
+        flash("Please log-in", "warning")
+        return redirect(url_for('virtual1'))
+    
+    print(f"user_id: {user_id}")
+
+    if request.method == "POST":
+        weight = float(request.form["weight"])
+        height = float(request.form["height"])
+        age = int(request.form["age"])
+        gender = request.form["gender"]
+        bmr_result = calculate_bmr(weight, height, age, gender)
+        return render_template("bmr.html", bmr_result=bmr_result, username=user_id[2])
+    
+    return render_template("bmr.html", bmr_result=None, username=user_id[2])
+
+
+@app.route("/mind-reader", methods=["GET", "POST"])
+def mind_reader():
+    user_id = flask_session.get("user_id")
+    if not user_id:
+        flash("Please log-in", "warning")
+        return redirect(url_for('virtual1'))
+
+    if request.method == "POST":
+        x = request.form["number"]
+        if not x:
+            flash("Please enter a number", "warning")
+            return redirect(url_for("mind_reader"))
+            
+        flask_session['number'] = x
+        print(x)
+        return redirect(url_for('mind_reader_result', number=x))
+
+    return render_template("mind-reader.html", username=user_id[2])
+
+
+@app.route("/mind-reader-result")
+def mind_reader_result():
+    user_id = flask_session.get("user_id")
+    if not user_id:
+        flash("Please log-in", "warning")
+        return redirect(url_for('virtual1'))
+    # if 'number' not in flask_session:
+    #     flash("First enter a number", "warning")
+    #     return redirect(url_for("mind_reader"))
+    y = request.args.get("number")
+    flask_session.pop('number', None)
+    return render_template("mind-reader-result.html", number=y, username=user_id[2])
+
+
+@app.route("/pose-detection")
+def pose_detection():
+    user_id = flask_session.get("user_id")
+    if not user_id:
+        flash("Please log-in", "warning")
+        return redirect(url_for('virtual1'))
+
+    return render_template("pose-detection.html")
 

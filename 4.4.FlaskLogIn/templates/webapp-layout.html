@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Custom CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">HermesSight</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <a href="/profile" class="btn btn-secondary mr-2">
+                    <i class="fas fa-user"></i> {% block username %}Profile{% endblock %}
+                </a>
+                <a href="/logout" class="btn btn-primary">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Card 1: Blue -->
+            <div class="col-md-4">
+                <div class="card text-center bg-primary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">{% block card1 %}Face Detection{% endblock %}</h5>
+                        <p class="card-text">Description for face detection.</p>
+                        <a href="{% block action1 %}/face-detection.html{% endblock %}" class="btn btn-light">Try it</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Green -->
+            <div class="col-md-4">
+                <div class="card text-center bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">{% block card2 %}Object Detection{% endblock %}</h5>
+                        <p class="card-text">Description for object detection.</p>
+                        <a href="{% block action2 %}/object-detection.html{% endblock %}" class="btn btn-light">Try it</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Red -->
+            <div class="col-md-4">
+                <div class="card text-center bg-danger text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">{% block card3 %}Card Title 3{% endblock %}</h5>
+                        <p class="card-text">Description for card 3.</p>
+                        <a href="{% block action3 %}/action3.html{% endblock %}" class="btn btn-light">Try it</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <!-- Card 4: Blue -->
+            <div class="col-md-4">
+                <div class="card text-center bg-primary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">{% block card4 %}Card Title 4{% endblock %}</h5>
+                        <p class="card-text">Description for card 4.</p>
+                        <a href="{% block action4 %}/action4.html{% endblock %}" class="btn btn-light">Try it</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Green -->
+            <div class="col-md-4">
+                <div class="card text-center bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">{% block card5 %}Card Title 5{% endblock %}</h5>
+                        <p class="card-text">Description for card 5.</p>
+                        <a href="{% block action5 %}/action5.html{% endblock %}" class="btn btn-light">Try it</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Red -->
+            <div class="col-md-4">
+                <div class="card text-center bg-danger text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">{% block card6 %}Card Title 6{% endblock %}</h5>
+                        <p class="card-text">Description for card 6.</p>
+                        <a href="{% block action6 %}/action6.html{% endblock %}" class="btn btn-light">Try it</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+</html>

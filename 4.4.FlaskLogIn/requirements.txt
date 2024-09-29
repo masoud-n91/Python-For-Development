@@ -8,6 +8,9 @@ bcrypt
 psycopg2-binary
 onnxruntime
 scikit-image
+pillow
+onnxruntime
+opencv-python
 
 google-generativeai
 

@@ -1,0 +1,53 @@
+{% extends 'webapp-layout.html' %}
+
+{% block username %}
+{{ username }}
+{% endblock %}
+
+{% block card1 %}
+Face Analysis
+{% endblock %}
+
+{% block action1 %}
+{{ url_for('ai_face_analysis') }}
+{% endblock %}
+
+{% block card2 %}
+BMR
+{% endblock %}
+
+{% block action2 %}
+{{ url_for('bmr') }}
+{% endblock %}
+
+{% block card3 %}
+Mind reader
+{% endblock %}
+
+{% block action3 %}
+{{ url_for('mind_reader') }}
+{% endblock %}
+
+{% block card4 %}
+Pose Detection
+{% endblock %}
+
+{% block action4 %}
+{{ url_for('pose_detection') }}
+{% endblock %}
+
+{% block card5 %}
+Chatbot
+{% endblock %}
+
+{% block action5 %}
+{{ url_for('chatbot_guest') }}
+{% endblock %}
+
+{% block card6 %}
+comming soon
+{% endblock %}
+
+{% block action6 %}
+#
+{% endblock %}
