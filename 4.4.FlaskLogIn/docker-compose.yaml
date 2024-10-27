@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  flask_app:
+    image: personal_webapp:latest
+    restart: always
+    ports:
+      - "9000:8000"
+    networks:
+      - personal_network
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: auth
+      POSTGRES_USER: Masoud
+      POSTGRES_PASSWORD: Mikhandi91!
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - personal_network
+
+networks:
+  personal_network:
+    driver: bridge

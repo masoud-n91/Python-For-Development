@@ -14,7 +14,7 @@ Face Analysis
         <div class="card text-bg-warning mb-3">
             <div class="card-body">
                 <h1 class="card-title">
-                   Face Analysis
+                    Face Analysis
                 </h1>
                 <p class="card-text">
                     Give me a picture of your face to get surprised!!
@@ -53,9 +53,9 @@ Face Analysis
                             {% for gender in genders %}
                             <li class="list-group-item">
                                 {% if gender == 0 %}
-                                    Female
+                                Female
                                 {% elif gender == 1 %}
-                                    Male
+                                Male
                                 {% endif %}
                             </li>
                             {% endfor %}
@@ -82,36 +82,52 @@ Face Analysis
     </div>
 </div>
 
-<!-- <div class="row mt-4">
-    <div class="col">
-        <div id="editor">
-            <p>Hello from CKEditor 5!</p>
+{% endblock %}
+
+
+{% block comments %}
+
+<div class="container mt-2  mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card text-center">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <h3 class="mb-4">Comments</h3>
+
+                        <!-- Comment Form -->
+                        <div class="card mt-4  mb-4">
+                            <div class="card-body">
+                                <form id="commentForm" method="POST" action="/submit_comment">
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="username" name="username"
+                                            placeholder="Enter your name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="commentText" class="form-label">Comment</label>
+                                        <textarea class="form-control" id="commentText" name="commentText" rows="3"
+                                            placeholder="Write a comment..."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mb-2">Post Comment</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Display Comments -->
+                        {% for comment in comments %}
+                        <div class="card mt-4 mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title comment-title">{{ comment[0] }} says:</h5>
+                                <p class="card-text">{{ comment[1] | safe  }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div> -->
-
-<script type="module">
-    import {
-        ClassicEditor,
-        Essentials,
-        Bold,
-        Italic,
-        Font,
-        Paragraph
-    } from 'ckeditor5';
-
-    ClassicEditor
-        .create( document.querySelector( '#editor' ), {
-            plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
-            toolbar: {
-                items: [
-                    'undo', 'redo', '|', 'bold', 'italic', '|',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-                ]
-            }
-        } )
-        .then( /* ... */ )
-        .catch( /* ... */ );
-</script>
+</div>
 
 {% endblock %}

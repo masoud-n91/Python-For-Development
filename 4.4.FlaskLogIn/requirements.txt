@@ -11,6 +11,9 @@ scikit-image
 pillow
 onnxruntime
 opencv-python
+pytz
+sqlalchemy
+
 
 google-generativeai
 

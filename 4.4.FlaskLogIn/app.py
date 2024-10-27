@@ -45,6 +45,24 @@ s = URLSafeTimedSerializer(os.getenv('SECRET_KEY', 'SecretKey'))
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 
+def load_comments():
+    
+    comments = db.get_comments()
+    user_list = []
+    comments_list = []
+
+    for comment in comments:
+        user_id = comment["user_id"]
+        text = comment["comment"]
+        print(f"User: {user_id}, Text: {text}")
+        print(f"User info: {db.get_guest_by_id(user_id).first_name}, Text: {text}")
+        user_list.append(db.get_guest_by_id(user_id).first_name)
+        comments_list.append(text)
+
+    combined = list(zip(user_list, comments_list))
+    return combined
+
+
 def google_init():
     genai.api_key = GOOGLE_API_KEY
 
@@ -799,6 +817,7 @@ def allowed_files(filename):
 @app.route("/ai-face-analysis", methods=["GET", "POST"])
 def ai_face_analysis():
     user_id = flask_session.get("user_id")
+    comments = db.get_comments()
     if not user_id:
         flash("Please log-in", "warning")
         return redirect(url_for('virtual1'))
@@ -816,14 +835,14 @@ def ai_face_analysis():
                 output_image, genders, ages = face_analysis.detect_age_gender(input_image)
                 image_uri = encode_image(output_image)
 
-                return render_template("ai-face-analysis.html", genders=genders, ages=ages, image_uri=image_uri, username=user_id[2])
+                return render_template("ai-face-analysis.html", genders=genders, ages=ages, image_uri=image_uri, username=user_id[2], comments=comments)
             except Exception as e:
                 flash(f"Error processing image: {e}", "danger")
                 return redirect(url_for("ai_face_analysis"))
         flash("File type not allowed", "warning")
         return redirect(url_for("ai_face_analysis"))
     
-    return render_template("ai-face-analysis.html", username=user_id[2])
+    return render_template("ai-face-analysis.html", username=user_id[2], comments=comments)
 
 
 def calculate_bmr(weight, height, age, gender):
@@ -898,3 +917,22 @@ def pose_detection():
 
     return render_template("pose-detection.html")
 
+
+@app.route("/submit_comment", methods=["POST"])
+def submit_comment():
+    comment = request.form["commentText"]
+    username = request.form["username"]
+    user = flask_session.get("user_id")
+
+    if user[0] == "guests":
+        user_id = db.get_guest_by_email(user[1]).id
+        db.submit_comment(user_id, comment)
+    if user[0] == "students":
+        print(f"Student: {user}")
+    if user[0] == "admins":
+        print(f"Admin: {user}")
+
+    comments = load_comments()
+    print(f"Comments: {comments}")
+
+    return render_template("ai-face-analysis.html", username=user[2], comments=comments)

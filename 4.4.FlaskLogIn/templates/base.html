@@ -6,9 +6,21 @@
     <title>{% block title %}Face Analyzing App{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.css" />
+
     <!-- Custom CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
+
+    <script type="importmap">
+        {
+            "imports": {
+                "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.js",
+                "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.2.0/"
+            }
+        }
+    </script>
+    
 </head>
 <body>
 
@@ -47,7 +59,7 @@
             {% endwith %}
         </div>
 
-        <div class="container mt-2"></div>
+        <div class="container mt-2">
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="card text-center">
@@ -61,8 +73,34 @@
                 </div>
             </div>
         </div>
+
+        {% block comments %}
+        {% endblock %}
+
     </div>
     
     <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script type="module">
+        import {
+            ClassicEditor,
+            Essentials,
+            Bold,
+            Italic,
+            Font,
+            Paragraph
+        } from 'ckeditor5';
+    
+        ClassicEditor
+            .create( document.querySelector( '#commentText' ), {
+                plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
+                toolbar: [
+                    'undo', 'redo', '|', 'bold', 'italic', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+                ]
+            } )
+            .then( /* ... */ )
+            .catch( /* ... */ );
+    </script>
+    
 </body>
 </html>
